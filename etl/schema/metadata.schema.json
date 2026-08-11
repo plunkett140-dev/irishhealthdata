@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IrishHealthData.com Dataset Metadata",
+  "description": "Every dataset must have a complete record matching this schema before it can be published. See Technical Design Document Section 6 and Decision 005.",
+  "type": "object",
+  "required": [
+    "dataset_id",
+    "title",
+    "owner",
+    "source_name",
+    "source_url",
+    "licence",
+    "attribution_required",
+    "redistribution_allowed",
+    "variables",
+    "geography_level",
+    "update_frequency",
+    "download_date",
+    "processing_date",
+    "citation",
+    "small_cell_suppression_applied"
+  ],
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Slug, e.g. ntpf-ipdc-waiting-list-by-hospital"
+    },
+    "title": { "type": "string" },
+    "owner": { "type": "string" },
+    "source_name": { "type": "string" },
+    "source_url": { "type": "string", "format": "uri" },
+    "licence": { "type": "string" },
+    "attribution_required": { "type": "string" },
+    "redistribution_allowed": { "type": "boolean" },
+    "variables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "geography_level": {
+      "type": "string",
+      "enum": ["national", "hse-region", "county", "hospital", "hospital-group"]
+    },
+    "update_frequency": { "type": "string" },
+    "download_date": { "type": "string", "format": "date" },
+    "processing_date": { "type": "string", "format": "date" },
+    "citation": { "type": "string" },
+    "quality_notes": { "type": "string" },
+    "known_limitations": { "type": "string" },
+    "small_cell_suppression_applied": {
+      "type": "boolean",
+      "description": "True if the source already applies statistical disclosure control (e.g. NTPF's 'Small Volume' aggregation under 20), or if we applied our own suppression rule downstream."
+    }
+  },
+  "additionalProperties": false
+}
