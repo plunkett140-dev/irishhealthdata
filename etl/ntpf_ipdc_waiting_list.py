@@ -84,16 +84,19 @@ def validate(raw_path: Path) -> pd.DataFrame:
     if df.empty:
         raise ValueError("Downloaded file has no rows — refusing to proceed.")
 
-    # Small-cell suppression check: NTPF applies its own SDC ("Small Volume"
-    # aggregation under 20) at source. We check it's present rather than
-    # re-deriving it, per the Legal-first principle — we don't republish
-    # anything the source hasn't already cleared.
+    # Small-cell suppression check: some NTPF files apply SDC via a "Small
+    # Volume" text marker; this hospital-level file does not appear to (it's
+    # aggregated enough that suppression isn't triggered). We detect rather
+    # than assume, per the Legal-first principle — never assert a suppression
+    # guarantee the source data doesn't actually demonstrate.
     text_blob = df.astype(str).apply(lambda s: s.str.lower()).values.tolist()
     flat = [cell for row in text_blob for cell in row]
-    suppression_marker_found = any("small volume" in cell for cell in flat)
-    print(f"Source-side suppression marker ('Small Volume') found: {suppression_marker_found}")
+    suppression_marker_found = any(
+        marker in cell for cell in flat for marker in ("small volume", "<5", "n/a")
+    )
+    print(f"Source-side suppression marker found: {suppression_marker_found}")
 
-    return df
+    return df, suppression_marker_found
 
 
 # --------------------------------------------------------------------------
@@ -101,16 +104,51 @@ def validate(raw_path: Path) -> pd.DataFrame:
 # --------------------------------------------------------------------------
 def transform(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Standardise column names to snake_case. Deliberately does NOT rename
-    columns to specific assumed business names (e.g. 'hospital', 'specialty')
-    until the real headers have been confirmed against a live download —
-    see the module docstring.
+    Confirmed against a real download (2026-08-11). This file is
+    hospital-level, wide-format: one row per hospital per Adult/Child list,
+    with each waiting-time band as its own column. No Specialty or Case_Type
+    breakdown exists at this level.
+
+    Two fixes applied here based on the real data:
+      1. Column names standardised to snake_case.
+      2. Numeric columns (waiting counts) arrive as text with comma thousands
+         separators (e.g. "5,434") and must be parsed to integers — pandas
+         reads them as strings by default, which would silently break any
+         downstream sum/comparison if left as-is.
     """
     df = df.copy()
+
+    rename_map = {
+        "ArchiveDate": "archive_date",
+        "Adult_Child": "adult_child",
+        "HospitalName": "hospital_name",
+        "0-6 Months": "months_0_6",
+        "6-12 Months": "months_6_12",
+        "12-18 Months": "months_12_18",
+        "18 Months +": "months_18_plus",
+        "Total": "total",
+    }
+    df = df.rename(columns=rename_map)
+    # Fallback for any columns not in the known map (keeps script from
+    # silently dropping data if NTPF changes headers in a future month)
     df.columns = [
-        c.strip().lower().replace(" ", "_").replace("-", "_")
+        rename_map.get(c, c.strip().lower().replace(" ", "_").replace("-", "_"))
         for c in df.columns
     ]
+
+    numeric_cols = ["months_0_6", "months_6_12", "months_12_18", "months_18_plus", "total"]
+    for col in numeric_cols:
+        if col in df.columns:
+            df[col] = (
+                df[col].astype(str).str.replace(",", "", regex=False).str.strip()
+            )
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    if "archive_date" in df.columns:
+        df["archive_date"] = pd.to_datetime(
+            df["archive_date"], format="%d/%m/%Y", errors="coerce"
+        ).dt.date
+
     return df
 
 
@@ -132,7 +170,7 @@ def load(df: pd.DataFrame) -> None:
 # --------------------------------------------------------------------------
 # DOCUMENT
 # --------------------------------------------------------------------------
-def document(df: pd.DataFrame, source_url: str) -> None:
+def document(df: pd.DataFrame, source_url: str, suppression_marker_found: bool) -> None:
     """Write the metadata record (validated against the JSON Schema) and
     append a row to the licensing register."""
     today = date.today().isoformat()
@@ -151,9 +189,19 @@ def document(df: pd.DataFrame, source_url: str) -> None:
         "download_date": today,
         "processing_date": today,
         "citation": f"{SOURCE_NAME}, Open Data — Waiting List Data, accessed {today}",
-        "quality_notes": "Loaded via automated ETL prototype; columns not yet manually reviewed against NTPF data dictionary.",
-        "known_limitations": "NTPF does not collect activity data (numbers treated/removed) — this is a stock (waiting), not flow, measure.",
-        "small_cell_suppression_applied": True,
+        "quality_notes": (
+            "Confirmed against live download 2026-08-11: wide-format, one row per "
+            "hospital per Adult/Child list, no specialty breakdown at this level. "
+            "Numeric columns arrive as comma-formatted text and are parsed to "
+            "integers in transform()."
+        ),
+        "known_limitations": (
+            "NTPF does not collect activity data (numbers treated/removed) — this is "
+            "a stock (waiting), not flow, measure. No specialty-level breakdown in "
+            "this particular file (see NTPF Open Data page for specialty-level files "
+            "if needed later)."
+        ),
+        "small_cell_suppression_applied": suppression_marker_found,
     }
 
     with open(SCHEMA_PATH) as f:
@@ -217,10 +265,10 @@ def main():
         sys.exit(1)
 
     raw_path = extract(source_url=args.source_url, source_file=args.source_file)
-    df = validate(raw_path)
+    df, suppression_marker_found = validate(raw_path)
     df = transform(df)
     load(df)
-    document(df, source_url=args.source_url)
+    document(df, source_url=args.source_url, suppression_marker_found=suppression_marker_found)
     print("\nDone. Reproduce this run any time from the raw file alone — that's the point.")
 
 

@@ -1,0 +1,28 @@
+{
+  "dataset_id": "ntpf-ipdc-waiting-list-by-hospital",
+  "title": "IPDC Waiting List by Hospital",
+  "owner": "Plunkett McCullagh",
+  "source_name": "National Treatment Purchase Fund (NTPF)",
+  "source_url": "https://www.ntpf.ie/waiting-list-data/open-data/",
+  "licence": "Re-use of Public Service Information (PSI) \u2014 see NTPF Data Protection / Re-use of Public Service Information page",
+  "attribution_required": "Source: National Treatment Purchase Fund (NTPF), Open Data \u2014 Waiting List Data",
+  "redistribution_allowed": true,
+  "variables": [
+    "archive_date",
+    "adult_child",
+    "hospital_name",
+    "months_0_6",
+    "months_6_12",
+    "months_12_18",
+    "months_18_plus",
+    "total"
+  ],
+  "geography_level": "hospital",
+  "update_frequency": "monthly",
+  "download_date": "2026-08-11",
+  "processing_date": "2026-08-11",
+  "citation": "National Treatment Purchase Fund (NTPF), Open Data \u2014 Waiting List Data, accessed 2026-08-11",
+  "quality_notes": "Confirmed against live download 2026-08-11: wide-format, one row per hospital per Adult/Child list, no specialty breakdown at this level. Numeric columns arrive as comma-formatted text and are parsed to integers in transform().",
+  "known_limitations": "NTPF does not collect activity data (numbers treated/removed) \u2014 this is a stock (waiting), not flow, measure. No specialty-level breakdown in this particular file (see NTPF Open Data page for specialty-level files if needed later).",
+  "small_cell_suppression_applied": false
+}
