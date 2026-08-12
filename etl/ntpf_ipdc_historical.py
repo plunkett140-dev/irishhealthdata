@@ -94,16 +94,20 @@ def download(year_key: str, url: str) -> Path:
 
 def clean_numeric_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Strip comma thousands separators from any column that looks numeric
-    once cleaned, without assuming exact column names (these vary by year)."""
+    once cleaned, without assuming exact column names (these vary by year).
+    Deliberately does not gate on dtype == object: pandas can store text
+    columns as StringDtype rather than classic object dtype depending on
+    version/settings, which would silently skip every column if checked."""
     df = df.copy()
     for col in df.columns:
-        if df[col].dtype == object:
-            cleaned = df[col].astype(str).str.replace(",", "", regex=False).str.strip()
-            numeric = pd.to_numeric(cleaned, errors="coerce")
-            # Only convert if the vast majority of values parsed as numbers —
-            # avoids wrongly converting genuine text columns (hospital names etc).
-            if numeric.notna().mean() > 0.9:
-                df[col] = numeric
+        if pd.api.types.is_numeric_dtype(df[col]):
+            continue
+        cleaned = df[col].astype(str).str.replace(",", "", regex=False).str.strip()
+        numeric = pd.to_numeric(cleaned, errors="coerce")
+        # Only convert if the vast majority of values parsed as numbers —
+        # avoids wrongly converting genuine text columns (hospital names etc).
+        if numeric.notna().mean() > 0.9:
+            df[col] = numeric
     return df
 
 
