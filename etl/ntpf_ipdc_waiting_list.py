@@ -18,6 +18,7 @@ run, inspect the printed column report before trusting the transform step blindl
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -53,9 +54,24 @@ def extract(source_url: str = None, source_file: str = None) -> Path:
         content = Path(source_file).read_bytes()
     elif source_url:
         print(f"Downloading {source_url} ...")
-        resp = requests.get(source_url, timeout=30)
-        resp.raise_for_status()
-        content = resp.content
+        try:
+            resp = requests.get(source_url, timeout=30)
+            resp.raise_for_status()
+            content = resp.content
+        except requests.exceptions.ConnectionError:
+            # Common on older Macs: system Python's bundled SSL (e.g. LibreSSL
+            # 2.8.3) can't complete a modern TLS handshake with some servers.
+            # curl uses the OS's own up-to-date SSL, so fall back to it rather
+            # than requiring the person to run curl by hand every time.
+            print("requests failed (likely outdated system SSL) — retrying via curl ...")
+            result = subprocess.run(
+                ["curl", "-L", "-s", "-f", source_url], capture_output=True
+            )
+            if result.returncode != 0 or not result.stdout:
+                raise RuntimeError(
+                    f"Both requests and curl failed to download {source_url}"
+                )
+            content = result.stdout
     else:
         raise ValueError("Provide either --source-url or --source-file")
 
