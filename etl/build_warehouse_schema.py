@@ -56,6 +56,55 @@ ERA_C_YEARS = {"2014", "2015", "2016", "2017"}
 
 BAND_COLUMNS_ERA_A = ["0-6 Months", "6-12 Months", "12-18 Months", "18 Months +"]
 
+# --------------------------------------------------------------------------
+# HOSPITAL NAME CANONICALISATION
+# --------------------------------------------------------------------------
+# Found by manual inspection of the real dim_hospital output (2026-08-12).
+# These are NOT typos to silently fix in code — they're documented here so
+# the reasoning is traceable, per the "no black box" principle. Two kinds:
+#   1. Genuine renames over the 2014-2026 window (hospital upgraded to
+#      University status, or gained a location suffix)
+#   2. The 2019 Children's Health Act merger (Temple Street, Crumlin, and
+#      Tallaght children's sites became one entity, Children's Health
+#      Ireland) — NTPF's own Open Data documentation states this explicitly
+# A canonical name is chosen (generally the most recent/current one) and
+# all historical variants map to it, so a multi-year trend for one real
+# hospital isn't silently fragmented across two dim_hospital rows.
+HOSPITAL_ALIASES = {
+    "Galway University Hospital": "Galway University Hospitals",
+    "Connolly Hospital": "Connolly Hospital Blanchardstown",
+    "Kerry General Hospital": "University Hospital Kerry",
+    "Letterkenny General Hospital": "Letterkenny University Hospital",
+    "St. Michael's Hospital": "St. Michael's Hospital Dun Laoghaire",
+    "Tallaght Hospital": "Tallaght University Hospital",
+    "Tallaght Children's Hospital": "Children's Health Ireland",
+    "Temple Street Children's University Hospital": "Children's Health Ireland",
+    "Childrens University Hospital Temple Street": "Children's Health Ireland",
+    "National Childrens Hospital at Tallaght University Hospital": "Children's Health Ireland",
+    "Our Lady's Children's Hospital Crumlin": "Children's Health Ireland",
+    "Cork University Maternity Hospital ": "Cork University Maternity Hospital",  # trailing-space duplicate
+    "National Orthopaedic Hospital Cappagh": "Cappagh National Orthopaedic Hospital",
+    "Lourdes Orthopaedic Hospital Kilcreene": "Kilcreene Regional Orthopaedic Hospital",
+    "Mayo General Hospital": "Mayo University Hospital",
+    "Portiuncula Hospital": "Portiuncula University Hospital",
+    "Roscommon Hospital": "Roscommon University Hospital",
+    "Sligo Regional Hospital": "Sligo University Hospital",
+}
+
+# NOT a real hospital — this is NTPF's Statistical Disclosure Control bucket
+# for specialty/hospital combinations with fewer than 20 people waiting (see
+# the "More information on Open Data publications" note on the Open Data
+# page). It must never be treated as a dimension member alongside real
+# hospitals — excluded from dim_hospital entirely, tracked separately.
+SUPPRESSED_BUCKET_LABEL = "Small Volume Hospitals"
+
+
+def canonicalise_hospital_name(name):
+    if name is None:
+        return name
+    name = HOSPITAL_ALIASES.get(name, name)
+    return name
+
 
 def normalise_era_a(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
     """Hospital-level wide format -> long format via melt. Total is dropped
@@ -136,7 +185,25 @@ def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
         frames.append(normalised[keep_cols])
         print(f"[{year_key}] normalised: {len(normalised)} rows, granularity={normalised['granularity'].iloc[0]}")
 
-    return pd.concat(frames, ignore_index=True)
+    unified = pd.concat(frames, ignore_index=True)
+
+    # Apply canonicalisation before any dimension is built, so renames/mergers
+    # collapse correctly rather than needing a second pass later.
+    unified["hospital_name"] = unified["hospital_name"].apply(canonicalise_hospital_name)
+
+    # The SDC suppression bucket is data (it tells us suppression happened)
+    # but is not a hospital. Flag it rather than silently dropping the rows —
+    # dropping would misrepresent total waiting-list volume; keeping it
+    # mixed into dim_hospital would misrepresent it as a real location.
+    is_suppressed = unified["hospital_name"] == SUPPRESSED_BUCKET_LABEL
+    n_suppressed = is_suppressed.sum()
+    if n_suppressed:
+        print(f"\nNote: {n_suppressed} rows are NTPF's 'Small Volume Hospitals' SDC "
+              f"suppression bucket, not a real hospital — flagged via is_suppressed_bucket, "
+              f"excluded from dim_hospital.")
+    unified["is_suppressed_bucket"] = is_suppressed
+
+    return unified
 
 
 def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
@@ -159,9 +226,9 @@ def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
     con.register("dim_date_view", dim_date)
     con.execute("CREATE OR REPLACE TABLE warehouse.dim_date AS SELECT date_id, archive_date, year, month FROM dim_date_view")
 
-    # --- dim_hospital ---
+    # --- dim_hospital (real hospitals only — suppression bucket excluded) ---
     dim_hospital = (
-        unified[["hospital_name", "hospital_group", "hospital_hipe"]]
+        unified.loc[~unified["is_suppressed_bucket"], ["hospital_name", "hospital_group", "hospital_hipe"]]
         .drop_duplicates(subset=["hospital_name"])
         .dropna(subset=["hospital_name"])
         .reset_index(drop=True)
@@ -187,7 +254,7 @@ def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
     fact = fact.merge(dim_specialty[["specialty_name", "specialty_id"]], on="specialty_name", how="left")
     fact["fact_id"] = range(1, len(fact) + 1)
 
-    fact_cols = ["fact_id", "date_id", "hospital_id", "specialty_id", "case_type", "adult_child", "time_band", "count", "granularity", "source_year_key"]
+    fact_cols = ["fact_id", "date_id", "hospital_id", "specialty_id", "case_type", "adult_child", "time_band", "count", "granularity", "source_year_key", "is_suppressed_bucket"]
     con.register("fact_view", fact[fact_cols])
     con.execute("CREATE OR REPLACE TABLE warehouse.fact_waiting_list AS SELECT * FROM fact_view")
 
