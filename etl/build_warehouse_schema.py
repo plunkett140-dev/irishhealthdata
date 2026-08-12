@@ -206,13 +206,27 @@ def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     return unified
 
 
+def parse_archive_date(series: pd.Series) -> pd.Series:
+    """NTPF's date format changed too: 2018+ files use DD/MM/YYYY, but
+    2014-2017 files use ISO format (YYYY-MM-DD) — confirmed by inspecting
+    raw_loads.ntpf_ipdc_historical_2016 directly. A single format string
+    silently drops one era's dates (pd.to_datetime with errors='coerce'
+    returns NaT, no error raised) — try both explicitly rather than
+    assuming one format covers all years."""
+    parsed = pd.to_datetime(series, format="%d/%m/%Y", errors="coerce")
+    still_missing = parsed.isna() & series.notna()
+    if still_missing.any():
+        parsed.loc[still_missing] = pd.to_datetime(
+            series[still_missing], format="%Y-%m-%d", errors="coerce"
+        )
+    return parsed
+
+
 def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
     con.execute("CREATE SCHEMA IF NOT EXISTS warehouse")
 
     # --- dim_date ---
-    unified["archive_date_parsed"] = pd.to_datetime(
-        unified["archive_date"], format="%d/%m/%Y", errors="coerce"
-    )
+    unified["archive_date_parsed"] = parse_archive_date(unified["archive_date"])
     dim_date = (
         unified[["archive_date_parsed"]]
         .drop_duplicates()
