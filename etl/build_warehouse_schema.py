@@ -1,23 +1,38 @@
 """
-Week 6: Build the unified dimension/fact schema for NTPF IPDC waiting list data.
+Week 6 (+ OP addition, 2026-08-13): Build the unified dimension/fact schema
+for NTPF waiting list data — both Inpatient/Day Case (IPDC) and Outpatient
+(OP), distinguished by a `list_type` column ('ipdc' or 'op') so both
+coexist in one fact table rather than needing parallel schemas.
 
-Reads the per-year raw_loads.ntpf_ipdc_historical_<year> tables (created by
-ntpf_ipdc_historical.py) and normalises three confirmed real formats into one
+Reads the per-year raw_loads.ntpf_ipdc_historical_<year> /
+ntpf_ipdc_speciality_<year> tables (from ntpf_ipdc_historical.py /
+ntpf_ipdc_speciality.py) and the equivalent ntpf_op_historical_<year> /
+ntpf_op_speciality_<year> tables (from ntpf_op_historical.py /
+ntpf_op_speciality.py), and normalises the confirmed real formats into one
 long-format fact table plus dimension tables:
 
   ERA A (2022-2026, and 2021_apr_dec): hospital-level, wide time-bands.
       ArchiveDate, Adult_Child, HospitalName, <band columns>, Total
-      No specialty/case-type breakdown.
+      No specialty/case-type breakdown. Applies to both IPDC and OP —
+      identical shape in both datasets.
 
   ERA B (2018-2020, 2021_jan_mar): specialty-level, long format.
       Archive_Date, Hospital_Group, Hospital_HIPE, Hospital_Name,
       Specialty_HIPE, Specialty_Name, Case_Type, Adult_Child, Age_Profile,
       Time_Bands, Total
+      IPDC has a Case_Type (Inpatient/Day Case) column here; OP does NOT —
+      outpatient appointments are a single type, so OP's equivalent files
+      have every other column but no Case_Type. Handled by the same
+      normalise_era_b() for both: the rename map only touches columns that
+      exist, and downstream code fills the missing case_type with None for
+      OP rows rather than erroring. OP's 2021_jan_mar file also has a
+      one-off "Specialty_HIPE1" column name (confirmed genuinely in the
+      source, not a parsing artifact) — added to the rename map.
 
-  ERA C (2014-2017): same shape as Era B, older naming.
-      'Archive Date','Group','Hospital HIPE','Hospital','Specialty HIPE',
-      'Specialty'/'Speciality','Case Type','Adult/Child',
-      'Age Categorisation'/'Age Profile','Time Bands','Count'/'Total'
+  ERA C (2014-2017): same shape as Era B, older naming. IPDC ONLY — OP has
+      no data for 2014-2017 at all (confirmed directly against NTPF's Open
+      Data page: the year selector lists these years but there are no
+      actual OP download links for them).
 
 KNOWN LIMITATION (documented, not silently papered over): time-band
 boundaries differ across eras (e.g. Era A uses 0-6/6-12/12-18/18+ months;
@@ -27,19 +42,36 @@ bucket scheme — reconciling that is a genuine analysis decision, not an
 ETL one, and forcing it here would hide a real methodological choice.
 See Decision 007 in the Technical Design Document.
 
+SECOND KNOWN LIMITATION, OP-specific: the OP-by-Speciality national file
+(2021 Apr-Dec through 2026) has TWO unlabeled rows per (archive_date,
+adult_child, speciality), with no column distinguishing them — confirmed by
+direct investigation (2026-08-13) to be real, distinct sub-populations
+(almost certainly a New vs. Review appointment split, though that's an
+inference NTPF's export doesn't confirm) rather than a duplicate-row error:
+summing both rows reconciles exactly against the OP-by-Hospital national
+total for the same date/population. This script sums them explicitly
+(granularity='national_specialty', list_type='op') rather than silently
+picking one row or leaving them duplicated in the fact table. See the
+Technical Design Document's Known Limitations for the same note.
+
 Output tables (schema: warehouse):
   dim_date(date_id, archive_date, year, month)
   dim_hospital(hospital_id, hospital_name, hospital_group, hospital_hipe)
   dim_specialty(specialty_id, specialty_name, specialty_hipe)
   fact_waiting_list(fact_id, date_id, hospital_id, specialty_id, case_type,
-                     adult_child, time_band, count, granularity, source_year_key)
+                     adult_child, time_band, count, granularity, list_type,
+                     source_year_key)
 
 granularity is 'hospital' (Era A, no specialty breakdown) or
 'hospital_specialty' (Era B/C). specialty_id is NULL for 'hospital' rows —
 this is the concrete, queryable form of Decision 006 (Indicator as
 first-class object): an indicator that needs specialty-level detail must
 filter to granularity='hospital_specialty' and accept it's only available
-for years with that data.
+for years with that data. list_type is 'ipdc' or 'op' — every query that
+wants a single dataset's total must filter on it explicitly, same spirit
+as granularity: never silently sum across list types, since IPDC and OP
+waiting lists represent different things (admission vs. consultation) and
+mixing them would misrepresent both.
 """
 
 from pathlib import Path
@@ -129,10 +161,17 @@ def normalise_era_a(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
 
 
 def normalise_era_b(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
+    """Shared by IPDC and OP era-B years. IPDC has Case_Type; OP doesn't —
+    rename() silently ignores keys not present, and load_all_years() fills
+    the resulting missing case_type column with None, so this works
+    unmodified for both. OP's 2021_jan_mar file also has a one-off
+    "Specialty_HIPE1" column (confirmed genuinely in the source) — included
+    here since it's harmless for IPDC years (never present there)."""
     df = df.rename(columns={
         "Archive_Date": "archive_date", "Hospital_Group": "hospital_group",
         "Hospital_HIPE": "hospital_hipe", "Hospital_Name": "hospital_name",
-        "Specialty_HIPE": "specialty_hipe", "Specialty_Name": "specialty_name",
+        "Specialty_HIPE": "specialty_hipe", "Specialty_HIPE1": "specialty_hipe",
+        "Specialty_Name": "specialty_name",
         "Case_Type": "case_type", "Adult_Child": "adult_child",
         "Time_Bands": "time_band", "Total": "count",
     })
@@ -156,14 +195,26 @@ def normalise_era_c(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
     return df
 
 
-def normalise_national_speciality(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
+def normalise_national_speciality(df: pd.DataFrame, year_key: str, dedupe_sum: bool = False) -> pd.DataFrame:
     """NTPF's separate 'by Speciality' files (2021-2026) — confirmed to have
     NO hospital column, national totals only. Real columns confirmed
-    2026-08-12: ArchiveDate, Adult_Child, Speciality, band columns, Total."""
+    2026-08-12: ArchiveDate, Adult_Child, Speciality, band columns, Total.
+
+    dedupe_sum=True: the OP-by-Speciality file has TWO unlabeled rows per
+    (archive_date, adult_child, speciality) that must be SUMMED, not kept
+    as separate rows — confirmed by direct investigation (2026-08-13): both
+    rows together reconcile exactly against the OP-by-Hospital national
+    total, so they're real distinct sub-populations NTPF doesn't label in
+    this export (see the module docstring). IPDC's equivalent file has no
+    such duplication (verified — one row per specialty), so this stays
+    False for IPDC's call site rather than changing behaviour that was
+    already correct."""
     df = df.rename(columns={"ArchiveDate": "archive_date", "Adult_Child": "adult_child", "Speciality": "specialty_name"})
     id_vars = ["archive_date", "adult_child", "specialty_name"]
     present_bands = [c for c in BAND_COLUMNS_ERA_A if c in df.columns]
     long = df.melt(id_vars=id_vars, value_vars=present_bands, var_name="time_band", value_name="count")
+    if dedupe_sum:
+        long = long.groupby(id_vars + ["time_band"], as_index=False)["count"].sum()
     long["hospital_name"] = None
     long["hospital_group"] = None
     long["hospital_hipe"] = None
@@ -174,23 +225,40 @@ def normalise_national_speciality(df: pd.DataFrame, year_key: str) -> pd.DataFra
     return long
 
 
+# Table-name-prefix -> (list_type, is_speciality_file). Same mapping shape
+# for IPDC and OP since both publish the same two file types under the same
+# raw_loads naming convention (see ntpf_op_historical.py / ntpf_op_speciality.py).
+TABLE_PREFIXES = {
+    "ntpf_ipdc_speciality_": ("ipdc", True),
+    "ntpf_ipdc_historical_": ("ipdc", False),
+    "ntpf_op_speciality_": ("op", True),
+    "ntpf_op_historical_": ("op", False),
+}
+
+
 def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     tables = con.execute(
         "SELECT table_name FROM information_schema.tables "
-        "WHERE table_schema = 'raw_loads' AND "
-        "(table_name LIKE 'ntpf_ipdc_historical_%' OR table_name LIKE 'ntpf_ipdc_speciality_%')"
+        "WHERE table_schema = 'raw_loads' AND ("
+        + " OR ".join(f"table_name LIKE '{prefix}%'" for prefix in TABLE_PREFIXES)
+        + ")"
     ).fetchall()
 
     frames = []
     for (table_name,) in tables:
+        prefix = next(p for p in TABLE_PREFIXES if table_name.startswith(p))
+        list_type, is_speciality_file = TABLE_PREFIXES[prefix]
+        year_key = table_name.replace(prefix, "")
+
         df = con.execute(f"SELECT * FROM raw_loads.{table_name}").df()
         df = df.drop(columns=[c for c in ["_source_year_key", "_source_url", "_loaded_date"] if c in df.columns])
 
-        if table_name.startswith("ntpf_ipdc_speciality_"):
-            year_key = table_name.replace("ntpf_ipdc_speciality_", "")
-            normalised = normalise_national_speciality(df, year_key)
+        if is_speciality_file:
+            # OP's speciality file has the unlabeled New/Review duplicate
+            # rows (see module docstring); IPDC's doesn't. dedupe_sum is
+            # keyed on list_type, not year, since the quirk is dataset-wide.
+            normalised = normalise_national_speciality(df, year_key, dedupe_sum=(list_type == "op"))
         else:
-            year_key = table_name.replace("ntpf_ipdc_historical_", "")
             if year_key in ERA_A_YEARS:
                 normalised = normalise_era_a(df, year_key)
             elif year_key in ERA_B_YEARS:
@@ -198,19 +266,21 @@ def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
             elif year_key in ERA_C_YEARS:
                 normalised = normalise_era_c(df, year_key)
             else:
-                print(f"WARNING: unrecognised year_key '{year_key}', skipping")
+                print(f"WARNING: unrecognised year_key '{year_key}' in {table_name}, skipping")
                 continue
+
+        normalised["list_type"] = list_type
 
         keep_cols = [
             "archive_date", "hospital_group", "hospital_hipe", "hospital_name",
             "specialty_hipe", "specialty_name", "case_type", "adult_child",
-            "time_band", "count", "granularity", "source_year_key",
+            "time_band", "count", "granularity", "list_type", "source_year_key",
         ]
         for col in keep_cols:
             if col not in normalised.columns:
                 normalised[col] = None
         frames.append(normalised[keep_cols])
-        print(f"[{year_key}] normalised: {len(normalised)} rows, granularity={normalised['granularity'].iloc[0]}")
+        print(f"[{list_type}/{year_key}] normalised: {len(normalised)} rows, granularity={normalised['granularity'].iloc[0]}")
 
     unified = pd.concat(frames, ignore_index=True)
 
@@ -298,7 +368,7 @@ def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
     fact = fact.merge(dim_specialty[["specialty_name", "specialty_id"]], on="specialty_name", how="left")
     fact["fact_id"] = range(1, len(fact) + 1)
 
-    fact_cols = ["fact_id", "date_id", "hospital_id", "specialty_id", "case_type", "adult_child", "time_band", "count", "granularity", "source_year_key", "is_suppressed_bucket"]
+    fact_cols = ["fact_id", "date_id", "hospital_id", "specialty_id", "case_type", "adult_child", "time_band", "count", "granularity", "list_type", "source_year_key", "is_suppressed_bucket"]
     con.register("fact_view", fact[fact_cols])
     con.execute("CREATE OR REPLACE TABLE warehouse.fact_waiting_list AS SELECT * FROM fact_view")
 
