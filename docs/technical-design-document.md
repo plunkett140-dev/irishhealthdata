@@ -1,5 +1,5 @@
 # IrishHealthData.com — Technical Design Document
-**Version:** 0.3 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
+**Version:** 0.5 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
 **Last updated:** 2026-08-11
 
 > This document is the single source of truth for what we're building, why, and how. Every major decision should be traceable here. If future-you can't reconstruct the reasoning in five minutes, this document has failed its purpose.
@@ -212,7 +212,7 @@ Context: publishing health statistics publicly requires a licence and re-identif
 Decision: No dataset ships without a completed metadata record (Section 6) and a licensing register entry.
 *Future Me Test:* Revisit if the dataset volume makes manual licence-checking a bottleneck — consider a semi-automated licence-flagging step.
 
-**Decision 006 — Organise the site around indicators, not raw datasets** *(OPEN — not yet decided)*
+**Decision 006 — Organise the site around indicators, not raw datasets** *(CLOSED — decided 2026-08-11, end of Week 5)*
 
 Context: raised in external review. A reader-facing indicator (e.g. "Hospital Bed Occupancy") often depends on multiple underlying datasets. Organising navigation and page structure around indicators rather than raw datasets may be more useful to readers and closer to how journalists/policymakers actually think about the data.
 
@@ -220,19 +220,33 @@ Alternatives:
 - (a) Keep dataset as the primary unit; indicators are just charts that reference one or more datasets informally
 - (b) Introduce Indicator as a first-class object in the data model, with an explicit `depends_on: [dataset_ids]` field, sitting between Dataset and Chart
 
-Trade-off: (b) is very likely the right long-term structure for readers, but it adds a schema layer before a single dataset has gone through the pipeline. Deciding this now, before Week 3's Common Data Model, avoids a rework later — but deciding it *too* early risks designing around a hierarchy that hasn't been stress-tested against a real dataset yet.
+Evidence from the Week 5 ETL prototype (NTPF IPDC Waiting List by Hospital, run against live data 2026-08-11): this file contains hospital × Adult/Child × time-band only — **no specialty breakdown**. A genuinely useful reader-facing indicator (e.g. a specialty-specific waiting list picture) will require joining this file with a different, specialty-level NTPF file once one is added. That's a concrete, observed case of one indicator depending on multiple datasets — not a hypothetical.
 
-**Recommendation:** lean toward (b), but don't finalise the schema until after Week 5's ETL prototype produces one real dataset — validate the Indicator concept against actual NTPF data rather than in the abstract. Revisit and close this decision at the end of Week 5.
+**Decision: (b).** Indicator becomes a first-class object, sitting between Dataset and Chart, with a `depends_on: [dataset_ids]` field. Reflected in the metadata standard (Section 6) and the Common Data Model (Week 3/6) going forward.
 
-*Future Me Test:* If by Week 6 a second dataset doesn't cleanly map to the indicator model, reconsider before it's load-bearing across the whole site.
+*Future Me Test:* If, after two or three more datasets are added, most indicators still map to exactly one dataset each, the extra schema layer may be adding complexity without payoff — reconsider collapsing it back to option (a) at that point rather than out of inertia.
 
 ---
+
+**Decision 008 — Hosting platform: Vercel**
+
+Context: raised 2026-08-12, working through backup/single-point-of-failure risk. Source code and raw data are already safe (pushed to GitHub, and raw data is independently re-downloadable from NTPF as a third fallback). The local DuckDB database is deliberately unbacked-up — it's fully regenerable from the archived raw files in minutes, per the Data is immutable / Everything is code principles, so it isn't treated as data at risk. The real open question was the *live public website*: GitHub hosts source, not a running site, and a laptop-only deployment would be both a single point of failure and inaccessible to other people.
+
+Alternatives considered:
+- Self-hosting on a VPS (e.g. DigitalOcean, Linode) — full control, but adds real server administration overhead, directly against the Simplicity principle at this project's current stage
+- Netlify — comparable to Vercel for a static/Next.js site, no strong reason to prefer over Vercel specifically
+
+Decision: **Vercel.** Built by the team behind Next.js (already Decision 003), so first-class support for the framework already chosen. Free tier is sufficient at this project's scale. Auto-deploys directly from the GitHub repo on every push — no separate manual upload step, keeping GitHub as the single source of truth per Decision 004.
+
+Consequences: the live site becomes available to anyone with the URL, not dependent on any one laptop. Local development still happens on Plunkett's machine, but nothing about the public site's availability depends on that machine being on or even existing.
+
+*Future Me Test:* Revisit if the project ever needs server-side compute beyond what Vercel's free tier supports (e.g. heavy live database queries rather than precomputed static JSON), or if costs change materially at scale.
 
 ### 8. Deferred sections *(intentionally not written yet)*
 
 Two structural ideas came up in review that are real but premature to formalise now:
 
-- **Information Architecture as a dedicated chapter** (Organisation → Dataset → Indicator → Chart → Dashboard → Article → Collection → Annual Report). This substantially overlaps Sections 5–6 already. Revisit once Decision 006 is closed — the hierarchy should follow from that decision, not be designed independently of it.
+- ~~**Information Architecture as a dedicated chapter**~~ — Decision 006 is now closed (Indicator is a first-class object). Formalise this as part of the Week 6 database design rather than as a separate document chapter — the hierarchy should live in the schema itself, not be re-described in prose.
 - **Versioning Strategy as a dedicated chapter** (dataset versions, metadata versions, site versions, source snapshots). There's nothing to version yet. Revisit after Week 6, once the first real database and dataset exist and there's something concrete to apply a scheme to.
 
 Noting them here so they aren't lost, without inflating the document with structure for things that don't exist yet.

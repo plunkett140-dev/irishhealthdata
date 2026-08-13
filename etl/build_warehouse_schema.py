@@ -98,6 +98,11 @@ HOSPITAL_ALIASES = {
 # hospitals — excluded from dim_hospital entirely, tracked separately.
 SUPPRESSED_BUCKET_LABEL = "Small Volume Hospitals"
 
+# Same concept, specialty level. NTPF used two different spellings across
+# years ("Specialities" vs "Specialties") — confirmed from the real
+# dim_specialty output (2026-08-12), both listed rather than assuming one.
+SUPPRESSED_SPECIALTY_LABELS = {"Small Volume Specialities", "Small Volume Specialties"}
+
 
 def canonicalise_hospital_name(name):
     if name is None:
@@ -151,28 +156,50 @@ def normalise_era_c(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
     return df
 
 
+def normalise_national_speciality(df: pd.DataFrame, year_key: str) -> pd.DataFrame:
+    """NTPF's separate 'by Speciality' files (2021-2026) — confirmed to have
+    NO hospital column, national totals only. Real columns confirmed
+    2026-08-12: ArchiveDate, Adult_Child, Speciality, band columns, Total."""
+    df = df.rename(columns={"ArchiveDate": "archive_date", "Adult_Child": "adult_child", "Speciality": "specialty_name"})
+    id_vars = ["archive_date", "adult_child", "specialty_name"]
+    present_bands = [c for c in BAND_COLUMNS_ERA_A if c in df.columns]
+    long = df.melt(id_vars=id_vars, value_vars=present_bands, var_name="time_band", value_name="count")
+    long["hospital_name"] = None
+    long["hospital_group"] = None
+    long["hospital_hipe"] = None
+    long["specialty_hipe"] = None
+    long["case_type"] = None
+    long["granularity"] = "national_specialty"
+    long["source_year_key"] = year_key
+    return long
+
+
 def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     tables = con.execute(
         "SELECT table_name FROM information_schema.tables "
-        "WHERE table_schema = 'raw_loads' AND table_name LIKE 'ntpf_ipdc_historical_%'"
+        "WHERE table_schema = 'raw_loads' AND "
+        "(table_name LIKE 'ntpf_ipdc_historical_%' OR table_name LIKE 'ntpf_ipdc_speciality_%')"
     ).fetchall()
 
     frames = []
     for (table_name,) in tables:
-        year_key = table_name.replace("ntpf_ipdc_historical_", "")
         df = con.execute(f"SELECT * FROM raw_loads.{table_name}").df()
-        # Drop the loader's own bookkeeping columns before normalising
         df = df.drop(columns=[c for c in ["_source_year_key", "_source_url", "_loaded_date"] if c in df.columns])
 
-        if year_key in ERA_A_YEARS:
-            normalised = normalise_era_a(df, year_key)
-        elif year_key in ERA_B_YEARS:
-            normalised = normalise_era_b(df, year_key)
-        elif year_key in ERA_C_YEARS:
-            normalised = normalise_era_c(df, year_key)
+        if table_name.startswith("ntpf_ipdc_speciality_"):
+            year_key = table_name.replace("ntpf_ipdc_speciality_", "")
+            normalised = normalise_national_speciality(df, year_key)
         else:
-            print(f"WARNING: unrecognised year_key '{year_key}', skipping")
-            continue
+            year_key = table_name.replace("ntpf_ipdc_historical_", "")
+            if year_key in ERA_A_YEARS:
+                normalised = normalise_era_a(df, year_key)
+            elif year_key in ERA_B_YEARS:
+                normalised = normalise_era_b(df, year_key)
+            elif year_key in ERA_C_YEARS:
+                normalised = normalise_era_c(df, year_key)
+            else:
+                print(f"WARNING: unrecognised year_key '{year_key}', skipping")
+                continue
 
         keep_cols = [
             "archive_date", "hospital_group", "hospital_hipe", "hospital_name",
@@ -195,12 +222,15 @@ def load_all_years(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     # but is not a hospital. Flag it rather than silently dropping the rows —
     # dropping would misrepresent total waiting-list volume; keeping it
     # mixed into dim_hospital would misrepresent it as a real location.
-    is_suppressed = unified["hospital_name"] == SUPPRESSED_BUCKET_LABEL
+    is_suppressed = (
+        (unified["hospital_name"] == SUPPRESSED_BUCKET_LABEL)
+        | (unified["specialty_name"].isin(SUPPRESSED_SPECIALTY_LABELS))
+    )
     n_suppressed = is_suppressed.sum()
     if n_suppressed:
-        print(f"\nNote: {n_suppressed} rows are NTPF's 'Small Volume Hospitals' SDC "
-              f"suppression bucket, not a real hospital — flagged via is_suppressed_bucket, "
-              f"excluded from dim_hospital.")
+        print(f"\nNote: {n_suppressed} rows are NTPF's SDC suppression buckets "
+              f"(hospital- or specialty-level), not real entities — flagged via "
+              f"is_suppressed_bucket, excluded from dim_hospital/dim_specialty.")
     unified["is_suppressed_bucket"] = is_suppressed
 
     return unified
@@ -253,7 +283,7 @@ def build_schema(con: duckdb.DuckDBPyConnection, unified: pd.DataFrame) -> None:
 
     # --- dim_specialty ---
     dim_specialty = (
-        unified[["specialty_name", "specialty_hipe"]]
+        unified.loc[~unified["is_suppressed_bucket"], ["specialty_name", "specialty_hipe"]]
         .drop_duplicates(subset=["specialty_name"])
         .dropna(subset=["specialty_name"])
         .reset_index(drop=True)
