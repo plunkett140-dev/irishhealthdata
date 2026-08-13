@@ -10,24 +10,29 @@ import {
 } from "recharts";
 import { ChartFooter } from "@/components/ChartFooter";
 import { BUCKET_COLORS } from "@/lib/theme";
-import type { Population, SpecialtyBreakdownData } from "@/lib/types";
+import { LIST_TYPE_LABELS } from "@/lib/types";
+import type { ListType, Population, SpecialtyBreakdownData } from "@/lib/types";
 
 interface SpecialtyBreakdownChartProps {
   data: SpecialtyBreakdownData;
+  listType: ListType;
   population: Population;
 }
 
 export function SpecialtyBreakdownChart({
   data,
+  listType,
   population,
 }: SpecialtyBreakdownChartProps) {
+  const listTypeData = data.list_types[listType];
   const { last_updated, known_limitations, items: rawItems } =
-    data.populations[population];
+    listTypeData.populations[population];
+  const listTypeLabel = LIST_TYPE_LABELS[listType];
 
   if (rawItems.length === 0) {
     return (
       <p className="text-sm text-zinc-500">
-        No {population} specialty-level data available.
+        No {population} {listTypeLabel} specialty-level data available.
       </p>
     );
   }
@@ -39,7 +44,7 @@ export function SpecialtyBreakdownChart({
   return (
     <section>
       <h2 className="text-lg font-semibold text-zinc-900">
-        National Waiting List by Specialty ({population})
+        National {listTypeLabel} Waiting List by Specialty ({population})
       </h2>
       <div className="mt-4 w-full" style={{ height: items.length * 32 + 70 }}>
         <ResponsiveContainer width="100%" height="100%">
@@ -82,7 +87,7 @@ export function SpecialtyBreakdownChart({
       <ChartFooter
         source={data.source}
         lastUpdated={last_updated ?? "n/a"}
-        methodologyNote={data.methodology_note}
+        methodologyNote={listTypeData.methodology_note}
         knownLimitations={known_limitations}
       />
     </section>

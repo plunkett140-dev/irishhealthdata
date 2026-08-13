@@ -10,7 +10,8 @@ import {
 } from "recharts";
 import { ChartFooter } from "@/components/ChartFooter";
 import { BUCKET_COLORS, COLOR_PRIMARY } from "@/lib/theme";
-import type { HospitalData, Population } from "@/lib/types";
+import { LIST_TYPE_LABELS } from "@/lib/types";
+import type { HospitalData, ListType, Population } from "@/lib/types";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-IE", {
@@ -21,21 +22,26 @@ function formatDate(dateStr: string) {
 
 interface WaitingListChartsProps {
   data: HospitalData;
+  listType: ListType;
   population: Population;
   titlePrefix: string;
 }
 
 export function WaitingListCharts({
   data,
+  listType,
   population,
   titlePrefix,
 }: WaitingListChartsProps) {
-  const { last_updated, series: rawSeries } = data.populations[population];
+  const listTypeData = data.list_types[listType];
+  const { last_updated, series: rawSeries } = listTypeData.populations[population];
+  const listTypeLabel = LIST_TYPE_LABELS[listType];
 
   if (rawSeries.length === 0) {
     return (
       <p className="text-sm text-zinc-500">
-        No {population} waiting-list data available for {titlePrefix}.
+        No {population} {listTypeLabel} waiting-list data available for{" "}
+        {titlePrefix}.
       </p>
     );
   }
@@ -49,7 +55,7 @@ export function WaitingListCharts({
     <div className="flex flex-col gap-10">
       <section>
         <h2 className="text-lg font-semibold text-zinc-900">
-          {titlePrefix}: Total IPDC Waiting List ({population})
+          {titlePrefix}: Total {listTypeLabel} Waiting List ({population})
         </h2>
         <div className="mt-4 h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -76,14 +82,15 @@ export function WaitingListCharts({
         <ChartFooter
           source={data.source}
           lastUpdated={last_updated ?? "n/a"}
-          methodologyNote={data.methodology_note}
-          knownLimitations={data.known_limitations}
+          methodologyNote={listTypeData.methodology_note}
+          knownLimitations={listTypeData.known_limitations}
         />
       </section>
 
       <section>
         <h2 className="text-lg font-semibold text-zinc-900">
-          {titlePrefix}: Waiting List by Length of Wait ({population})
+          {titlePrefix}: {listTypeLabel} Waiting List by Length of Wait (
+          {population})
         </h2>
         <div className="mt-4 h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -127,8 +134,8 @@ export function WaitingListCharts({
         <ChartFooter
           source={data.source}
           lastUpdated={last_updated ?? "n/a"}
-          methodologyNote={data.methodology_note}
-          knownLimitations={data.known_limitations}
+          methodologyNote={listTypeData.methodology_note}
+          knownLimitations={listTypeData.known_limitations}
         />
       </section>
     </div>

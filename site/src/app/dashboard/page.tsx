@@ -6,34 +6,39 @@ import { WaitingListCharts } from "@/components/WaitingListCharts";
 import type {
   HospitalData,
   HospitalIndexEntry,
+  ListType,
   Population,
   SpecialtyBreakdownData,
 } from "@/lib/types";
-import { POPULATIONS } from "@/lib/types";
+import { LIST_TYPE_LABELS, LIST_TYPES, POPULATIONS } from "@/lib/types";
 
 const DEFAULT_SLUG = "beaumont-hospital";
 
-function PopulationToggle({
-  population,
+function SegmentedToggle<T extends string>({
+  value,
+  options,
+  labels,
   onChange,
 }: {
-  population: Population;
-  onChange: (p: Population) => void;
+  value: T;
+  options: T[];
+  labels?: Record<T, string>;
+  onChange: (v: T) => void;
 }) {
   return (
     <div className="inline-flex rounded-md border border-zinc-300 bg-white p-0.5">
-      {POPULATIONS.map((p) => (
+      {options.map((option) => (
         <button
-          key={p}
+          key={option}
           type="button"
-          onClick={() => onChange(p)}
+          onClick={() => onChange(option)}
           className={`rounded px-3 py-1 text-sm font-medium transition-colors ${
-            population === p
+            value === option
               ? "bg-zinc-900 text-white"
               : "text-zinc-600 hover:text-zinc-900"
           }`}
         >
-          {p}
+          {labels ? labels[option] : option}
         </button>
       ))}
     </div>
@@ -41,6 +46,7 @@ function PopulationToggle({
 }
 
 export default function DashboardPage() {
+  const [listType, setListType] = useState<ListType>("ipdc");
   const [population, setPopulation] = useState<Population>("Adult");
   const [national, setNational] = useState<HospitalData | null>(null);
   const [specialtyBreakdown, setSpecialtyBreakdown] =
@@ -91,16 +97,30 @@ export default function DashboardPage() {
             Hospital Waiting List Dashboard
           </h1>
           <p className="mt-1 text-sm text-zinc-600">
-            NTPF IPDC (Inpatient/Day Case) waiting list.
+            NTPF waiting list data — Inpatient/Day Case (IPDC) and
+            Outpatient (OP).
           </p>
         </div>
-        <PopulationToggle population={population} onChange={setPopulation} />
+        <div className="flex flex-col items-end gap-2">
+          <SegmentedToggle
+            value={listType}
+            options={LIST_TYPES}
+            labels={LIST_TYPE_LABELS}
+            onChange={setListType}
+          />
+          <SegmentedToggle
+            value={population}
+            options={POPULATIONS}
+            onChange={setPopulation}
+          />
+        </div>
       </div>
 
       <div className="mt-8">
         {national ? (
           <WaitingListCharts
             data={national}
+            listType={listType}
             population={population}
             titlePrefix="National"
           />
@@ -112,6 +132,7 @@ export default function DashboardPage() {
           {specialtyBreakdown ? (
             <SpecialtyBreakdownChart
               data={specialtyBreakdown}
+              listType={listType}
               population={population}
             />
           ) : (
@@ -156,6 +177,7 @@ export default function DashboardPage() {
           ) : (
             <WaitingListCharts
               data={hospitalData}
+              listType={listType}
               population={population}
               titlePrefix={hospitalData.hospital_name}
             />

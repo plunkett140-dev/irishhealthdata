@@ -2,2104 +2,2992 @@
   "hospital_name": "Letterkenny University Hospital",
   "slug": "letterkenny-university-hospital",
   "source": "National Treatment Purchase Fund (NTPF), Open Data \u2014 Waiting List Data",
-  "methodology_note": "Pre-2021 figures summed across Inpatient + Day Case and all specialties for comparability with the combined post-2021 reporting format. Time bands grouped into Under 6 / 6-12 / 12+ months by starting wait length, since NTPF's own band boundaries changed at the same point (2022+ files use 0-6/6-12/12-18/18+ months; pre-2021 files use 0-3/3-6/6-9/9-12/12+ months) and are not directly comparable band-for-band.",
-  "known_limitations": "Adult and Child are NTPF's own classification (no further age breakdown is published). A hospital with no patients in a population shows an empty chart for that toggle rather than being hidden.",
-  "populations": {
-    "Adult": {
-      "last_updated": "2026-06-25",
-      "series": [
-        {
-          "date": "2014-01-30",
-          "total": 1634,
-          "under_6": 1243,
-          "six_to_12": 383,
-          "twelve_plus": 8
-        },
-        {
-          "date": "2014-02-27",
-          "total": 1594,
-          "under_6": 1240,
-          "six_to_12": 312,
-          "twelve_plus": 42
-        },
-        {
-          "date": "2014-03-27",
-          "total": 1551,
-          "under_6": 1226,
-          "six_to_12": 277,
-          "twelve_plus": 48
-        },
-        {
-          "date": "2014-04-29",
-          "total": 1382,
-          "under_6": 1119,
-          "six_to_12": 263,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-05-29",
-          "total": 1504,
-          "under_6": 1229,
-          "six_to_12": 274,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2014-06-26",
-          "total": 1381,
-          "under_6": 1265,
-          "six_to_12": 116,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-07-30",
-          "total": 1380,
-          "under_6": 1227,
-          "six_to_12": 152,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2014-08-28",
-          "total": 1337,
-          "under_6": 1183,
-          "six_to_12": 152,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2014-09-25",
-          "total": 1392,
-          "under_6": 1230,
-          "six_to_12": 162,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-10-30",
-          "total": 1400,
-          "under_6": 1190,
-          "six_to_12": 210,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-11-27",
-          "total": 1555,
-          "under_6": 1314,
-          "six_to_12": 240,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2014-12-23",
-          "total": 1780,
-          "under_6": 1327,
-          "six_to_12": 447,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2015-01-29",
-          "total": 1904,
-          "under_6": 1271,
-          "six_to_12": 628,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2015-02-26",
-          "total": 2051,
-          "under_6": 1276,
-          "six_to_12": 706,
-          "twelve_plus": 69
-        },
-        {
-          "date": "2015-03-26",
-          "total": 2008,
-          "under_6": 1189,
-          "six_to_12": 675,
-          "twelve_plus": 144
-        },
-        {
-          "date": "2015-04-29",
-          "total": 2006,
-          "under_6": 1160,
-          "six_to_12": 664,
-          "twelve_plus": 182
-        },
-        {
-          "date": "2015-05-28",
-          "total": 2090,
-          "under_6": 1181,
-          "six_to_12": 718,
-          "twelve_plus": 191
-        },
-        {
-          "date": "2015-06-30",
-          "total": 1973,
-          "under_6": 1095,
-          "six_to_12": 631,
-          "twelve_plus": 247
-        },
-        {
-          "date": "2015-07-30",
-          "total": 2049,
-          "under_6": 1154,
-          "six_to_12": 644,
-          "twelve_plus": 251
-        },
-        {
-          "date": "2015-08-27",
-          "total": 2061,
-          "under_6": 1153,
-          "six_to_12": 653,
-          "twelve_plus": 255
-        },
-        {
-          "date": "2015-09-30",
-          "total": 1567,
-          "under_6": 798,
-          "six_to_12": 619,
-          "twelve_plus": 150
-        },
-        {
-          "date": "2015-10-29",
-          "total": 1713,
-          "under_6": 995,
-          "six_to_12": 598,
-          "twelve_plus": 120
-        },
-        {
-          "date": "2015-11-26",
-          "total": 1693,
-          "under_6": 1011,
-          "six_to_12": 557,
-          "twelve_plus": 125
-        },
-        {
-          "date": "2015-12-31",
-          "total": 1752,
-          "under_6": 994,
-          "six_to_12": 578,
-          "twelve_plus": 180
-        },
-        {
-          "date": "2016-01-28",
-          "total": 1800,
-          "under_6": 978,
-          "six_to_12": 600,
-          "twelve_plus": 222
-        },
-        {
-          "date": "2016-02-25",
-          "total": 1900,
-          "under_6": 1113,
-          "six_to_12": 592,
-          "twelve_plus": 195
-        },
-        {
-          "date": "2016-03-31",
-          "total": 1834,
-          "under_6": 1062,
-          "six_to_12": 579,
-          "twelve_plus": 193
-        },
-        {
-          "date": "2016-04-28",
-          "total": 1847,
-          "under_6": 1153,
-          "six_to_12": 508,
-          "twelve_plus": 186
-        },
-        {
-          "date": "2016-05-31",
-          "total": 1806,
-          "under_6": 1130,
-          "six_to_12": 510,
-          "twelve_plus": 166
-        },
-        {
-          "date": "2016-06-30",
-          "total": 1823,
-          "under_6": 1134,
-          "six_to_12": 523,
-          "twelve_plus": 166
-        },
-        {
-          "date": "2016-07-28",
-          "total": 1941,
-          "under_6": 1216,
-          "six_to_12": 519,
-          "twelve_plus": 206
-        },
-        {
-          "date": "2016-08-31",
-          "total": 2050,
-          "under_6": 1228,
-          "six_to_12": 572,
-          "twelve_plus": 250
-        },
-        {
-          "date": "2016-09-29",
-          "total": 2019,
-          "under_6": 1218,
-          "six_to_12": 560,
-          "twelve_plus": 241
-        },
-        {
-          "date": "2016-10-27",
-          "total": 2065,
-          "under_6": 1239,
-          "six_to_12": 608,
-          "twelve_plus": 218
-        },
-        {
-          "date": "2016-11-30",
-          "total": 2296,
-          "under_6": 1387,
-          "six_to_12": 647,
-          "twelve_plus": 262
-        },
-        {
-          "date": "2016-12-30",
-          "total": 2318,
-          "under_6": 1383,
-          "six_to_12": 654,
-          "twelve_plus": 281
-        },
-        {
-          "date": "2017-01-31",
-          "total": 2409,
-          "under_6": 1379,
-          "six_to_12": 720,
-          "twelve_plus": 310
-        },
-        {
-          "date": "2017-02-28",
-          "total": 2356,
-          "under_6": 1306,
-          "six_to_12": 726,
-          "twelve_plus": 324
-        },
-        {
-          "date": "2017-03-30",
-          "total": 2617,
-          "under_6": 1420,
-          "six_to_12": 877,
-          "twelve_plus": 320
-        },
-        {
-          "date": "2017-04-27",
-          "total": 2636,
-          "under_6": 1431,
-          "six_to_12": 861,
-          "twelve_plus": 344
-        },
-        {
-          "date": "2017-05-31",
-          "total": 2680,
-          "under_6": 1439,
-          "six_to_12": 877,
-          "twelve_plus": 364
-        },
-        {
-          "date": "2017-06-29",
-          "total": 2635,
-          "under_6": 1419,
-          "six_to_12": 856,
-          "twelve_plus": 360
-        },
-        {
-          "date": "2017-07-27",
-          "total": 2546,
-          "under_6": 1423,
-          "six_to_12": 785,
-          "twelve_plus": 338
-        },
-        {
-          "date": "2017-08-31",
-          "total": 2722,
-          "under_6": 1529,
-          "six_to_12": 798,
-          "twelve_plus": 395
-        },
-        {
-          "date": "2017-09-28",
-          "total": 2701,
-          "under_6": 1460,
-          "six_to_12": 823,
-          "twelve_plus": 418
-        },
-        {
-          "date": "2017-10-31",
-          "total": 2603,
-          "under_6": 1400,
-          "six_to_12": 794,
-          "twelve_plus": 409
-        },
-        {
-          "date": "2017-11-30",
-          "total": 2596,
-          "under_6": 1406,
-          "six_to_12": 769,
-          "twelve_plus": 421
-        },
-        {
-          "date": "2017-12-29",
-          "total": 2660,
-          "under_6": 1382,
-          "six_to_12": 803,
-          "twelve_plus": 475
-        },
-        {
-          "date": "2018-01-31",
-          "total": 2634,
-          "under_6": 1301,
-          "six_to_12": 836,
-          "twelve_plus": 497
-        },
-        {
-          "date": "2018-02-28",
-          "total": 2561,
-          "under_6": 1303,
-          "six_to_12": 773,
-          "twelve_plus": 485
-        },
-        {
-          "date": "2018-03-29",
-          "total": 2416,
-          "under_6": 1229,
-          "six_to_12": 711,
-          "twelve_plus": 476
-        },
-        {
-          "date": "2018-04-26",
-          "total": 2242,
-          "under_6": 1163,
-          "six_to_12": 665,
-          "twelve_plus": 414
-        },
-        {
-          "date": "2018-05-31",
-          "total": 2168,
-          "under_6": 1149,
-          "six_to_12": 639,
-          "twelve_plus": 380
-        },
-        {
-          "date": "2018-06-28",
-          "total": 1973,
-          "under_6": 1183,
-          "six_to_12": 492,
-          "twelve_plus": 298
-        },
-        {
-          "date": "2018-07-27",
-          "total": 1867,
-          "under_6": 1216,
-          "six_to_12": 411,
-          "twelve_plus": 240
-        },
-        {
-          "date": "2018-08-30",
-          "total": 1829,
-          "under_6": 1212,
-          "six_to_12": 380,
-          "twelve_plus": 237
-        },
-        {
-          "date": "2018-09-27",
-          "total": 1872,
-          "under_6": 1296,
-          "six_to_12": 362,
-          "twelve_plus": 214
-        },
-        {
-          "date": "2018-10-31",
-          "total": 1776,
-          "under_6": 1272,
-          "six_to_12": 320,
-          "twelve_plus": 184
-        },
-        {
-          "date": "2018-11-29",
-          "total": 1751,
-          "under_6": 1244,
-          "six_to_12": 326,
-          "twelve_plus": 181
-        },
-        {
-          "date": "2018-12-20",
-          "total": 1818,
-          "under_6": 1366,
-          "six_to_12": 282,
-          "twelve_plus": 170
-        },
-        {
-          "date": "2019-01-31",
-          "total": 1954,
-          "under_6": 1434,
-          "six_to_12": 356,
-          "twelve_plus": 164
-        },
-        {
-          "date": "2019-02-28",
-          "total": 1846,
-          "under_6": 1334,
-          "six_to_12": 356,
-          "twelve_plus": 156
-        },
-        {
-          "date": "2019-03-28",
-          "total": 1781,
-          "under_6": 1309,
-          "six_to_12": 340,
-          "twelve_plus": 132
-        },
-        {
-          "date": "2019-04-25",
-          "total": 1774,
-          "under_6": 1316,
-          "six_to_12": 326,
-          "twelve_plus": 132
-        },
-        {
-          "date": "2019-05-30",
-          "total": 1773,
-          "under_6": 1311,
-          "six_to_12": 309,
-          "twelve_plus": 153
-        },
-        {
-          "date": "2019-06-27",
-          "total": 1835,
-          "under_6": 1361,
-          "six_to_12": 336,
-          "twelve_plus": 138
-        },
-        {
-          "date": "2019-07-25",
-          "total": 1839,
-          "under_6": 1365,
-          "six_to_12": 338,
-          "twelve_plus": 136
-        },
-        {
-          "date": "2019-08-30",
-          "total": 1886,
-          "under_6": 1409,
-          "six_to_12": 330,
-          "twelve_plus": 147
-        },
-        {
-          "date": "2019-09-26",
-          "total": 2089,
-          "under_6": 1543,
-          "six_to_12": 383,
-          "twelve_plus": 163
-        },
-        {
-          "date": "2019-10-31",
-          "total": 2063,
-          "under_6": 1545,
-          "six_to_12": 326,
-          "twelve_plus": 192
-        },
-        {
-          "date": "2019-11-28",
-          "total": 1890,
-          "under_6": 1368,
-          "six_to_12": 340,
-          "twelve_plus": 182
-        },
-        {
-          "date": "2019-12-19",
-          "total": 1945,
-          "under_6": 1464,
-          "six_to_12": 306,
-          "twelve_plus": 175
-        },
-        {
-          "date": "2020-01-30",
-          "total": 1973,
-          "under_6": 1440,
-          "six_to_12": 350,
-          "twelve_plus": 183
-        },
-        {
-          "date": "2020-02-27",
-          "total": 2034,
-          "under_6": 1454,
-          "six_to_12": 373,
-          "twelve_plus": 207
-        },
-        {
-          "date": "2020-03-26",
-          "total": 2197,
-          "under_6": 1521,
-          "six_to_12": 436,
-          "twelve_plus": 240
-        },
-        {
-          "date": "2020-04-30",
-          "total": 2431,
-          "under_6": 1574,
-          "six_to_12": 569,
-          "twelve_plus": 288
-        },
-        {
-          "date": "2020-05-28",
-          "total": 2411,
-          "under_6": 1422,
-          "six_to_12": 653,
-          "twelve_plus": 336
-        },
-        {
-          "date": "2020-06-25",
-          "total": 2386,
-          "under_6": 1174,
-          "six_to_12": 825,
-          "twelve_plus": 387
-        },
-        {
-          "date": "2020-07-30",
-          "total": 2443,
-          "under_6": 1094,
-          "six_to_12": 920,
-          "twelve_plus": 429
-        },
-        {
-          "date": "2020-08-27",
-          "total": 2327,
-          "under_6": 977,
-          "six_to_12": 918,
-          "twelve_plus": 432
-        },
-        {
-          "date": "2020-09-24",
-          "total": 2470,
-          "under_6": 1021,
-          "six_to_12": 962,
-          "twelve_plus": 487
-        },
-        {
-          "date": "2020-10-29",
-          "total": 2606,
-          "under_6": 1262,
-          "six_to_12": 774,
-          "twelve_plus": 570
-        },
-        {
-          "date": "2020-11-26",
-          "total": 2770,
-          "under_6": 1580,
-          "six_to_12": 558,
-          "twelve_plus": 632
-        },
-        {
-          "date": "2020-12-23",
-          "total": 2757,
-          "under_6": 1550,
-          "six_to_12": 516,
-          "twelve_plus": 691
-        },
-        {
-          "date": "2021-01-28",
-          "total": 2946,
-          "under_6": 1542,
-          "six_to_12": 600,
-          "twelve_plus": 804
-        },
-        {
-          "date": "2021-02-25",
-          "total": 3062,
-          "under_6": 1493,
-          "six_to_12": 641,
-          "twelve_plus": 928
-        },
-        {
-          "date": "2021-03-25",
-          "total": 3088,
-          "under_6": 1364,
-          "six_to_12": 747,
-          "twelve_plus": 977
-        },
-        {
-          "date": "2021-04-29",
-          "total": 2989,
-          "under_6": 1201,
-          "six_to_12": 874,
-          "twelve_plus": 914
-        },
-        {
-          "date": "2021-05-13",
-          "total": 2776,
-          "under_6": 1046,
-          "six_to_12": 848,
-          "twelve_plus": 882
-        },
-        {
-          "date": "2021-07-29",
-          "total": 2678,
-          "under_6": 1002,
-          "six_to_12": 715,
-          "twelve_plus": 961
-        },
-        {
-          "date": "2021-08-26",
-          "total": 2697,
-          "under_6": 1079,
-          "six_to_12": 635,
-          "twelve_plus": 983
-        },
-        {
-          "date": "2021-09-30",
-          "total": 2670,
-          "under_6": 1112,
-          "six_to_12": 527,
-          "twelve_plus": 1031
-        },
-        {
-          "date": "2021-10-28",
-          "total": 2580,
-          "under_6": 1154,
-          "six_to_12": 366,
-          "twelve_plus": 1060
-        },
-        {
-          "date": "2021-11-25",
-          "total": 2605,
-          "under_6": 1234,
-          "six_to_12": 286,
-          "twelve_plus": 1085
-        },
-        {
-          "date": "2021-12-23",
-          "total": 2505,
-          "under_6": 1251,
-          "six_to_12": 262,
-          "twelve_plus": 992
-        },
-        {
-          "date": "2022-01-27",
-          "total": 2608,
-          "under_6": 1239,
-          "six_to_12": 358,
-          "twelve_plus": 1011
-        },
-        {
-          "date": "2022-02-24",
-          "total": 2665,
-          "under_6": 1272,
-          "six_to_12": 406,
-          "twelve_plus": 987
-        },
-        {
-          "date": "2022-03-31",
-          "total": 2733,
-          "under_6": 1278,
-          "six_to_12": 467,
-          "twelve_plus": 988
-        },
-        {
-          "date": "2022-04-28",
-          "total": 2678,
-          "under_6": 1302,
-          "six_to_12": 412,
-          "twelve_plus": 964
-        },
-        {
-          "date": "2022-05-26",
-          "total": 2502,
-          "under_6": 1200,
-          "six_to_12": 414,
-          "twelve_plus": 888
-        },
-        {
-          "date": "2022-06-30",
-          "total": 2691,
-          "under_6": 1405,
-          "six_to_12": 406,
-          "twelve_plus": 880
-        },
-        {
-          "date": "2022-07-28",
-          "total": 2678,
-          "under_6": 1418,
-          "six_to_12": 376,
-          "twelve_plus": 884
-        },
-        {
-          "date": "2022-08-25",
-          "total": 2647,
-          "under_6": 1461,
-          "six_to_12": 360,
-          "twelve_plus": 826
-        },
-        {
-          "date": "2022-09-29",
-          "total": 2697,
-          "under_6": 1534,
-          "six_to_12": 335,
-          "twelve_plus": 828
-        },
-        {
-          "date": "2022-10-27",
-          "total": 2535,
-          "under_6": 1515,
-          "six_to_12": 353,
-          "twelve_plus": 667
-        },
-        {
-          "date": "2022-11-24",
-          "total": 2509,
-          "under_6": 1586,
-          "six_to_12": 368,
-          "twelve_plus": 555
-        },
-        {
-          "date": "2022-12-22",
-          "total": 2214,
-          "under_6": 1409,
-          "six_to_12": 276,
-          "twelve_plus": 529
-        },
-        {
-          "date": "2023-01-26",
-          "total": 2371,
-          "under_6": 1495,
-          "six_to_12": 334,
-          "twelve_plus": 542
-        },
-        {
-          "date": "2023-02-23",
-          "total": 2380,
-          "under_6": 1423,
-          "six_to_12": 409,
-          "twelve_plus": 548
-        },
-        {
-          "date": "2023-03-30",
-          "total": 2231,
-          "under_6": 1326,
-          "six_to_12": 373,
-          "twelve_plus": 532
-        },
-        {
-          "date": "2023-04-27",
-          "total": 2282,
-          "under_6": 1364,
-          "six_to_12": 391,
-          "twelve_plus": 527
-        },
-        {
-          "date": "2023-05-25",
-          "total": 2042,
-          "under_6": 1193,
-          "six_to_12": 381,
-          "twelve_plus": 468
-        },
-        {
-          "date": "2023-06-29",
-          "total": 2005,
-          "under_6": 1249,
-          "six_to_12": 344,
-          "twelve_plus": 412
-        },
-        {
-          "date": "2023-07-27",
-          "total": 2059,
-          "under_6": 1357,
-          "six_to_12": 317,
-          "twelve_plus": 385
-        },
-        {
-          "date": "2023-08-31",
-          "total": 2309,
-          "under_6": 1478,
-          "six_to_12": 346,
-          "twelve_plus": 485
-        },
-        {
-          "date": "2023-09-28",
-          "total": 2141,
-          "under_6": 1381,
-          "six_to_12": 321,
-          "twelve_plus": 439
-        },
-        {
-          "date": "2023-10-26",
-          "total": 1742,
-          "under_6": 1159,
-          "six_to_12": 226,
-          "twelve_plus": 357
-        },
-        {
-          "date": "2023-11-30",
-          "total": 1454,
-          "under_6": 1052,
-          "six_to_12": 149,
-          "twelve_plus": 253
-        },
-        {
-          "date": "2023-12-28",
-          "total": 1490,
-          "under_6": 1049,
-          "six_to_12": 204,
-          "twelve_plus": 237
-        },
-        {
-          "date": "2024-01-25",
-          "total": 1493,
-          "under_6": 1053,
-          "six_to_12": 186,
-          "twelve_plus": 254
-        },
-        {
-          "date": "2024-02-29",
-          "total": 1295,
-          "under_6": 853,
-          "six_to_12": 196,
-          "twelve_plus": 246
-        },
-        {
-          "date": "2024-03-28",
-          "total": 1391,
-          "under_6": 983,
-          "six_to_12": 185,
-          "twelve_plus": 223
-        },
-        {
-          "date": "2024-04-25",
-          "total": 1558,
-          "under_6": 1144,
-          "six_to_12": 216,
-          "twelve_plus": 198
-        },
-        {
-          "date": "2024-05-30",
-          "total": 1581,
-          "under_6": 1163,
-          "six_to_12": 227,
-          "twelve_plus": 191
-        },
-        {
-          "date": "2024-06-27",
-          "total": 1883,
-          "under_6": 1473,
-          "six_to_12": 209,
-          "twelve_plus": 201
-        },
-        {
-          "date": "2024-07-25",
-          "total": 1571,
-          "under_6": 1214,
-          "six_to_12": 167,
-          "twelve_plus": 190
-        },
-        {
-          "date": "2024-08-29",
-          "total": 1263,
-          "under_6": 947,
-          "six_to_12": 146,
-          "twelve_plus": 170
-        },
-        {
-          "date": "2024-09-26",
-          "total": 1175,
-          "under_6": 881,
-          "six_to_12": 145,
-          "twelve_plus": 149
-        },
-        {
-          "date": "2024-10-31",
-          "total": 1272,
-          "under_6": 996,
-          "six_to_12": 161,
-          "twelve_plus": 115
-        },
-        {
-          "date": "2024-11-28",
-          "total": 1301,
-          "under_6": 1030,
-          "six_to_12": 160,
-          "twelve_plus": 111
-        },
-        {
-          "date": "2024-12-19",
-          "total": 1417,
-          "under_6": 1167,
-          "six_to_12": 139,
-          "twelve_plus": 111
-        },
-        {
-          "date": "2025-01-30",
-          "total": 1781,
-          "under_6": 1475,
-          "six_to_12": 170,
-          "twelve_plus": 136
-        },
-        {
-          "date": "2025-02-27",
-          "total": 1994,
-          "under_6": 1628,
-          "six_to_12": 200,
-          "twelve_plus": 166
-        },
-        {
-          "date": "2025-03-27",
-          "total": 2147,
-          "under_6": 1723,
-          "six_to_12": 259,
-          "twelve_plus": 165
-        },
-        {
-          "date": "2025-04-24",
-          "total": 2069,
-          "under_6": 1639,
-          "six_to_12": 283,
-          "twelve_plus": 147
-        },
-        {
-          "date": "2025-05-29",
-          "total": 2265,
-          "under_6": 1744,
-          "six_to_12": 346,
-          "twelve_plus": 175
-        },
-        {
-          "date": "2025-06-26",
-          "total": 2126,
-          "under_6": 1622,
-          "six_to_12": 347,
-          "twelve_plus": 157
-        },
-        {
-          "date": "2025-07-31",
-          "total": 1976,
-          "under_6": 1544,
-          "six_to_12": 296,
-          "twelve_plus": 136
-        },
-        {
-          "date": "2025-08-28",
-          "total": 1827,
-          "under_6": 1413,
-          "six_to_12": 280,
-          "twelve_plus": 134
-        },
-        {
-          "date": "2025-09-25",
-          "total": 1963,
-          "under_6": 1508,
-          "six_to_12": 304,
-          "twelve_plus": 151
-        },
-        {
-          "date": "2025-10-30",
-          "total": 2268,
-          "under_6": 1828,
-          "six_to_12": 299,
-          "twelve_plus": 141
-        },
-        {
-          "date": "2025-11-27",
-          "total": 2357,
-          "under_6": 1921,
-          "six_to_12": 309,
-          "twelve_plus": 127
-        },
-        {
-          "date": "2025-12-18",
-          "total": 2477,
-          "under_6": 2155,
-          "six_to_12": 252,
-          "twelve_plus": 70
-        },
-        {
-          "date": "2026-01-29",
-          "total": 3090,
-          "under_6": 2549,
-          "six_to_12": 379,
-          "twelve_plus": 162
-        },
-        {
-          "date": "2026-02-26",
-          "total": 3397,
-          "under_6": 2709,
-          "six_to_12": 479,
-          "twelve_plus": 209
-        },
-        {
-          "date": "2026-03-26",
-          "total": 3391,
-          "under_6": 2707,
-          "six_to_12": 508,
-          "twelve_plus": 176
-        },
-        {
-          "date": "2026-04-30",
-          "total": 3681,
-          "under_6": 2800,
-          "six_to_12": 728,
-          "twelve_plus": 153
-        },
-        {
-          "date": "2026-05-28",
-          "total": 3652,
-          "under_6": 2650,
-          "six_to_12": 854,
-          "twelve_plus": 148
-        },
-        {
-          "date": "2026-06-25",
-          "total": 3707,
-          "under_6": 2539,
-          "six_to_12": 1006,
-          "twelve_plus": 162
+  "list_types": {
+    "ipdc": {
+      "methodology_note": "Pre-2021 figures summed across Inpatient + Day Case and all specialties for comparability with the combined post-2021 reporting format. Time bands grouped into Under 6 / 6-12 / 12+ months by starting wait length, since NTPF's own band boundaries changed at the same point (2022+ files use 0-6/6-12/12-18/18+ months; pre-2021 files use 0-3/3-6/6-9/9-12/12+ months) and are not directly comparable band-for-band.",
+      "known_limitations": "Adult and Child are NTPF's own classification (no further age breakdown is published). A hospital with no patients in a population shows an empty chart for that toggle rather than being hidden.",
+      "populations": {
+        "Adult": {
+          "last_updated": "2026-06-25",
+          "series": [
+            {
+              "date": "2014-01-30",
+              "total": 1634,
+              "under_6": 1243,
+              "six_to_12": 383,
+              "twelve_plus": 8
+            },
+            {
+              "date": "2014-02-27",
+              "total": 1594,
+              "under_6": 1240,
+              "six_to_12": 312,
+              "twelve_plus": 42
+            },
+            {
+              "date": "2014-03-27",
+              "total": 1551,
+              "under_6": 1226,
+              "six_to_12": 277,
+              "twelve_plus": 48
+            },
+            {
+              "date": "2014-04-29",
+              "total": 1382,
+              "under_6": 1119,
+              "six_to_12": 263,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-05-29",
+              "total": 1504,
+              "under_6": 1229,
+              "six_to_12": 274,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2014-06-26",
+              "total": 1381,
+              "under_6": 1265,
+              "six_to_12": 116,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-07-30",
+              "total": 1380,
+              "under_6": 1227,
+              "six_to_12": 152,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2014-08-28",
+              "total": 1337,
+              "under_6": 1183,
+              "six_to_12": 152,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2014-09-25",
+              "total": 1392,
+              "under_6": 1230,
+              "six_to_12": 162,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-10-30",
+              "total": 1400,
+              "under_6": 1190,
+              "six_to_12": 210,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-11-27",
+              "total": 1555,
+              "under_6": 1314,
+              "six_to_12": 240,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2014-12-23",
+              "total": 1780,
+              "under_6": 1327,
+              "six_to_12": 447,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2015-01-29",
+              "total": 1904,
+              "under_6": 1271,
+              "six_to_12": 628,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2015-02-26",
+              "total": 2051,
+              "under_6": 1276,
+              "six_to_12": 706,
+              "twelve_plus": 69
+            },
+            {
+              "date": "2015-03-26",
+              "total": 2008,
+              "under_6": 1189,
+              "six_to_12": 675,
+              "twelve_plus": 144
+            },
+            {
+              "date": "2015-04-29",
+              "total": 2006,
+              "under_6": 1160,
+              "six_to_12": 664,
+              "twelve_plus": 182
+            },
+            {
+              "date": "2015-05-28",
+              "total": 2090,
+              "under_6": 1181,
+              "six_to_12": 718,
+              "twelve_plus": 191
+            },
+            {
+              "date": "2015-06-30",
+              "total": 1973,
+              "under_6": 1095,
+              "six_to_12": 631,
+              "twelve_plus": 247
+            },
+            {
+              "date": "2015-07-30",
+              "total": 2049,
+              "under_6": 1154,
+              "six_to_12": 644,
+              "twelve_plus": 251
+            },
+            {
+              "date": "2015-08-27",
+              "total": 2061,
+              "under_6": 1153,
+              "six_to_12": 653,
+              "twelve_plus": 255
+            },
+            {
+              "date": "2015-09-30",
+              "total": 1567,
+              "under_6": 798,
+              "six_to_12": 619,
+              "twelve_plus": 150
+            },
+            {
+              "date": "2015-10-29",
+              "total": 1713,
+              "under_6": 995,
+              "six_to_12": 598,
+              "twelve_plus": 120
+            },
+            {
+              "date": "2015-11-26",
+              "total": 1693,
+              "under_6": 1011,
+              "six_to_12": 557,
+              "twelve_plus": 125
+            },
+            {
+              "date": "2015-12-31",
+              "total": 1752,
+              "under_6": 994,
+              "six_to_12": 578,
+              "twelve_plus": 180
+            },
+            {
+              "date": "2016-01-28",
+              "total": 1800,
+              "under_6": 978,
+              "six_to_12": 600,
+              "twelve_plus": 222
+            },
+            {
+              "date": "2016-02-25",
+              "total": 1900,
+              "under_6": 1113,
+              "six_to_12": 592,
+              "twelve_plus": 195
+            },
+            {
+              "date": "2016-03-31",
+              "total": 1834,
+              "under_6": 1062,
+              "six_to_12": 579,
+              "twelve_plus": 193
+            },
+            {
+              "date": "2016-04-28",
+              "total": 1847,
+              "under_6": 1153,
+              "six_to_12": 508,
+              "twelve_plus": 186
+            },
+            {
+              "date": "2016-05-31",
+              "total": 1806,
+              "under_6": 1130,
+              "six_to_12": 510,
+              "twelve_plus": 166
+            },
+            {
+              "date": "2016-06-30",
+              "total": 1823,
+              "under_6": 1134,
+              "six_to_12": 523,
+              "twelve_plus": 166
+            },
+            {
+              "date": "2016-07-28",
+              "total": 1941,
+              "under_6": 1216,
+              "six_to_12": 519,
+              "twelve_plus": 206
+            },
+            {
+              "date": "2016-08-31",
+              "total": 2050,
+              "under_6": 1228,
+              "six_to_12": 572,
+              "twelve_plus": 250
+            },
+            {
+              "date": "2016-09-29",
+              "total": 2019,
+              "under_6": 1218,
+              "six_to_12": 560,
+              "twelve_plus": 241
+            },
+            {
+              "date": "2016-10-27",
+              "total": 2065,
+              "under_6": 1239,
+              "six_to_12": 608,
+              "twelve_plus": 218
+            },
+            {
+              "date": "2016-11-30",
+              "total": 2296,
+              "under_6": 1387,
+              "six_to_12": 647,
+              "twelve_plus": 262
+            },
+            {
+              "date": "2016-12-30",
+              "total": 2318,
+              "under_6": 1383,
+              "six_to_12": 654,
+              "twelve_plus": 281
+            },
+            {
+              "date": "2017-01-31",
+              "total": 2409,
+              "under_6": 1379,
+              "six_to_12": 720,
+              "twelve_plus": 310
+            },
+            {
+              "date": "2017-02-28",
+              "total": 2356,
+              "under_6": 1306,
+              "six_to_12": 726,
+              "twelve_plus": 324
+            },
+            {
+              "date": "2017-03-30",
+              "total": 2617,
+              "under_6": 1420,
+              "six_to_12": 877,
+              "twelve_plus": 320
+            },
+            {
+              "date": "2017-04-27",
+              "total": 2636,
+              "under_6": 1431,
+              "six_to_12": 861,
+              "twelve_plus": 344
+            },
+            {
+              "date": "2017-05-31",
+              "total": 2680,
+              "under_6": 1439,
+              "six_to_12": 877,
+              "twelve_plus": 364
+            },
+            {
+              "date": "2017-06-29",
+              "total": 2635,
+              "under_6": 1419,
+              "six_to_12": 856,
+              "twelve_plus": 360
+            },
+            {
+              "date": "2017-07-27",
+              "total": 2546,
+              "under_6": 1423,
+              "six_to_12": 785,
+              "twelve_plus": 338
+            },
+            {
+              "date": "2017-08-31",
+              "total": 2722,
+              "under_6": 1529,
+              "six_to_12": 798,
+              "twelve_plus": 395
+            },
+            {
+              "date": "2017-09-28",
+              "total": 2701,
+              "under_6": 1460,
+              "six_to_12": 823,
+              "twelve_plus": 418
+            },
+            {
+              "date": "2017-10-31",
+              "total": 2603,
+              "under_6": 1400,
+              "six_to_12": 794,
+              "twelve_plus": 409
+            },
+            {
+              "date": "2017-11-30",
+              "total": 2596,
+              "under_6": 1406,
+              "six_to_12": 769,
+              "twelve_plus": 421
+            },
+            {
+              "date": "2017-12-29",
+              "total": 2660,
+              "under_6": 1382,
+              "six_to_12": 803,
+              "twelve_plus": 475
+            },
+            {
+              "date": "2018-01-31",
+              "total": 2634,
+              "under_6": 1301,
+              "six_to_12": 836,
+              "twelve_plus": 497
+            },
+            {
+              "date": "2018-02-28",
+              "total": 2561,
+              "under_6": 1303,
+              "six_to_12": 773,
+              "twelve_plus": 485
+            },
+            {
+              "date": "2018-03-29",
+              "total": 2416,
+              "under_6": 1229,
+              "six_to_12": 711,
+              "twelve_plus": 476
+            },
+            {
+              "date": "2018-04-26",
+              "total": 2242,
+              "under_6": 1163,
+              "six_to_12": 665,
+              "twelve_plus": 414
+            },
+            {
+              "date": "2018-05-31",
+              "total": 2168,
+              "under_6": 1149,
+              "six_to_12": 639,
+              "twelve_plus": 380
+            },
+            {
+              "date": "2018-06-28",
+              "total": 1973,
+              "under_6": 1183,
+              "six_to_12": 492,
+              "twelve_plus": 298
+            },
+            {
+              "date": "2018-07-27",
+              "total": 1867,
+              "under_6": 1216,
+              "six_to_12": 411,
+              "twelve_plus": 240
+            },
+            {
+              "date": "2018-08-30",
+              "total": 1829,
+              "under_6": 1212,
+              "six_to_12": 380,
+              "twelve_plus": 237
+            },
+            {
+              "date": "2018-09-27",
+              "total": 1872,
+              "under_6": 1296,
+              "six_to_12": 362,
+              "twelve_plus": 214
+            },
+            {
+              "date": "2018-10-31",
+              "total": 1776,
+              "under_6": 1272,
+              "six_to_12": 320,
+              "twelve_plus": 184
+            },
+            {
+              "date": "2018-11-29",
+              "total": 1751,
+              "under_6": 1244,
+              "six_to_12": 326,
+              "twelve_plus": 181
+            },
+            {
+              "date": "2018-12-20",
+              "total": 1818,
+              "under_6": 1366,
+              "six_to_12": 282,
+              "twelve_plus": 170
+            },
+            {
+              "date": "2019-01-31",
+              "total": 1954,
+              "under_6": 1434,
+              "six_to_12": 356,
+              "twelve_plus": 164
+            },
+            {
+              "date": "2019-02-28",
+              "total": 1846,
+              "under_6": 1334,
+              "six_to_12": 356,
+              "twelve_plus": 156
+            },
+            {
+              "date": "2019-03-28",
+              "total": 1781,
+              "under_6": 1309,
+              "six_to_12": 340,
+              "twelve_plus": 132
+            },
+            {
+              "date": "2019-04-25",
+              "total": 1774,
+              "under_6": 1316,
+              "six_to_12": 326,
+              "twelve_plus": 132
+            },
+            {
+              "date": "2019-05-30",
+              "total": 1773,
+              "under_6": 1311,
+              "six_to_12": 309,
+              "twelve_plus": 153
+            },
+            {
+              "date": "2019-06-27",
+              "total": 1835,
+              "under_6": 1361,
+              "six_to_12": 336,
+              "twelve_plus": 138
+            },
+            {
+              "date": "2019-07-25",
+              "total": 1839,
+              "under_6": 1365,
+              "six_to_12": 338,
+              "twelve_plus": 136
+            },
+            {
+              "date": "2019-08-30",
+              "total": 1886,
+              "under_6": 1409,
+              "six_to_12": 330,
+              "twelve_plus": 147
+            },
+            {
+              "date": "2019-09-26",
+              "total": 2089,
+              "under_6": 1543,
+              "six_to_12": 383,
+              "twelve_plus": 163
+            },
+            {
+              "date": "2019-10-31",
+              "total": 2063,
+              "under_6": 1545,
+              "six_to_12": 326,
+              "twelve_plus": 192
+            },
+            {
+              "date": "2019-11-28",
+              "total": 1890,
+              "under_6": 1368,
+              "six_to_12": 340,
+              "twelve_plus": 182
+            },
+            {
+              "date": "2019-12-19",
+              "total": 1945,
+              "under_6": 1464,
+              "six_to_12": 306,
+              "twelve_plus": 175
+            },
+            {
+              "date": "2020-01-30",
+              "total": 1973,
+              "under_6": 1440,
+              "six_to_12": 350,
+              "twelve_plus": 183
+            },
+            {
+              "date": "2020-02-27",
+              "total": 2034,
+              "under_6": 1454,
+              "six_to_12": 373,
+              "twelve_plus": 207
+            },
+            {
+              "date": "2020-03-26",
+              "total": 2197,
+              "under_6": 1521,
+              "six_to_12": 436,
+              "twelve_plus": 240
+            },
+            {
+              "date": "2020-04-30",
+              "total": 2431,
+              "under_6": 1574,
+              "six_to_12": 569,
+              "twelve_plus": 288
+            },
+            {
+              "date": "2020-05-28",
+              "total": 2411,
+              "under_6": 1422,
+              "six_to_12": 653,
+              "twelve_plus": 336
+            },
+            {
+              "date": "2020-06-25",
+              "total": 2386,
+              "under_6": 1174,
+              "six_to_12": 825,
+              "twelve_plus": 387
+            },
+            {
+              "date": "2020-07-30",
+              "total": 2443,
+              "under_6": 1094,
+              "six_to_12": 920,
+              "twelve_plus": 429
+            },
+            {
+              "date": "2020-08-27",
+              "total": 2327,
+              "under_6": 977,
+              "six_to_12": 918,
+              "twelve_plus": 432
+            },
+            {
+              "date": "2020-09-24",
+              "total": 2470,
+              "under_6": 1021,
+              "six_to_12": 962,
+              "twelve_plus": 487
+            },
+            {
+              "date": "2020-10-29",
+              "total": 2606,
+              "under_6": 1262,
+              "six_to_12": 774,
+              "twelve_plus": 570
+            },
+            {
+              "date": "2020-11-26",
+              "total": 2770,
+              "under_6": 1580,
+              "six_to_12": 558,
+              "twelve_plus": 632
+            },
+            {
+              "date": "2020-12-23",
+              "total": 2757,
+              "under_6": 1550,
+              "six_to_12": 516,
+              "twelve_plus": 691
+            },
+            {
+              "date": "2021-01-28",
+              "total": 2946,
+              "under_6": 1542,
+              "six_to_12": 600,
+              "twelve_plus": 804
+            },
+            {
+              "date": "2021-02-25",
+              "total": 3062,
+              "under_6": 1493,
+              "six_to_12": 641,
+              "twelve_plus": 928
+            },
+            {
+              "date": "2021-03-25",
+              "total": 3088,
+              "under_6": 1364,
+              "six_to_12": 747,
+              "twelve_plus": 977
+            },
+            {
+              "date": "2021-04-29",
+              "total": 2989,
+              "under_6": 1201,
+              "six_to_12": 874,
+              "twelve_plus": 914
+            },
+            {
+              "date": "2021-05-13",
+              "total": 2776,
+              "under_6": 1046,
+              "six_to_12": 848,
+              "twelve_plus": 882
+            },
+            {
+              "date": "2021-07-29",
+              "total": 2678,
+              "under_6": 1002,
+              "six_to_12": 715,
+              "twelve_plus": 961
+            },
+            {
+              "date": "2021-08-26",
+              "total": 2697,
+              "under_6": 1079,
+              "six_to_12": 635,
+              "twelve_plus": 983
+            },
+            {
+              "date": "2021-09-30",
+              "total": 2670,
+              "under_6": 1112,
+              "six_to_12": 527,
+              "twelve_plus": 1031
+            },
+            {
+              "date": "2021-10-28",
+              "total": 2580,
+              "under_6": 1154,
+              "six_to_12": 366,
+              "twelve_plus": 1060
+            },
+            {
+              "date": "2021-11-25",
+              "total": 2605,
+              "under_6": 1234,
+              "six_to_12": 286,
+              "twelve_plus": 1085
+            },
+            {
+              "date": "2021-12-23",
+              "total": 2505,
+              "under_6": 1251,
+              "six_to_12": 262,
+              "twelve_plus": 992
+            },
+            {
+              "date": "2022-01-27",
+              "total": 2608,
+              "under_6": 1239,
+              "six_to_12": 358,
+              "twelve_plus": 1011
+            },
+            {
+              "date": "2022-02-24",
+              "total": 2665,
+              "under_6": 1272,
+              "six_to_12": 406,
+              "twelve_plus": 987
+            },
+            {
+              "date": "2022-03-31",
+              "total": 2733,
+              "under_6": 1278,
+              "six_to_12": 467,
+              "twelve_plus": 988
+            },
+            {
+              "date": "2022-04-28",
+              "total": 2678,
+              "under_6": 1302,
+              "six_to_12": 412,
+              "twelve_plus": 964
+            },
+            {
+              "date": "2022-05-26",
+              "total": 2502,
+              "under_6": 1200,
+              "six_to_12": 414,
+              "twelve_plus": 888
+            },
+            {
+              "date": "2022-06-30",
+              "total": 2691,
+              "under_6": 1405,
+              "six_to_12": 406,
+              "twelve_plus": 880
+            },
+            {
+              "date": "2022-07-28",
+              "total": 2678,
+              "under_6": 1418,
+              "six_to_12": 376,
+              "twelve_plus": 884
+            },
+            {
+              "date": "2022-08-25",
+              "total": 2647,
+              "under_6": 1461,
+              "six_to_12": 360,
+              "twelve_plus": 826
+            },
+            {
+              "date": "2022-09-29",
+              "total": 2697,
+              "under_6": 1534,
+              "six_to_12": 335,
+              "twelve_plus": 828
+            },
+            {
+              "date": "2022-10-27",
+              "total": 2535,
+              "under_6": 1515,
+              "six_to_12": 353,
+              "twelve_plus": 667
+            },
+            {
+              "date": "2022-11-24",
+              "total": 2509,
+              "under_6": 1586,
+              "six_to_12": 368,
+              "twelve_plus": 555
+            },
+            {
+              "date": "2022-12-22",
+              "total": 2214,
+              "under_6": 1409,
+              "six_to_12": 276,
+              "twelve_plus": 529
+            },
+            {
+              "date": "2023-01-26",
+              "total": 2371,
+              "under_6": 1495,
+              "six_to_12": 334,
+              "twelve_plus": 542
+            },
+            {
+              "date": "2023-02-23",
+              "total": 2380,
+              "under_6": 1423,
+              "six_to_12": 409,
+              "twelve_plus": 548
+            },
+            {
+              "date": "2023-03-30",
+              "total": 2231,
+              "under_6": 1326,
+              "six_to_12": 373,
+              "twelve_plus": 532
+            },
+            {
+              "date": "2023-04-27",
+              "total": 2282,
+              "under_6": 1364,
+              "six_to_12": 391,
+              "twelve_plus": 527
+            },
+            {
+              "date": "2023-05-25",
+              "total": 2042,
+              "under_6": 1193,
+              "six_to_12": 381,
+              "twelve_plus": 468
+            },
+            {
+              "date": "2023-06-29",
+              "total": 2005,
+              "under_6": 1249,
+              "six_to_12": 344,
+              "twelve_plus": 412
+            },
+            {
+              "date": "2023-07-27",
+              "total": 2059,
+              "under_6": 1357,
+              "six_to_12": 317,
+              "twelve_plus": 385
+            },
+            {
+              "date": "2023-08-31",
+              "total": 2309,
+              "under_6": 1478,
+              "six_to_12": 346,
+              "twelve_plus": 485
+            },
+            {
+              "date": "2023-09-28",
+              "total": 2141,
+              "under_6": 1381,
+              "six_to_12": 321,
+              "twelve_plus": 439
+            },
+            {
+              "date": "2023-10-26",
+              "total": 1742,
+              "under_6": 1159,
+              "six_to_12": 226,
+              "twelve_plus": 357
+            },
+            {
+              "date": "2023-11-30",
+              "total": 1454,
+              "under_6": 1052,
+              "six_to_12": 149,
+              "twelve_plus": 253
+            },
+            {
+              "date": "2023-12-28",
+              "total": 1490,
+              "under_6": 1049,
+              "six_to_12": 204,
+              "twelve_plus": 237
+            },
+            {
+              "date": "2024-01-25",
+              "total": 1493,
+              "under_6": 1053,
+              "six_to_12": 186,
+              "twelve_plus": 254
+            },
+            {
+              "date": "2024-02-29",
+              "total": 1295,
+              "under_6": 853,
+              "six_to_12": 196,
+              "twelve_plus": 246
+            },
+            {
+              "date": "2024-03-28",
+              "total": 1391,
+              "under_6": 983,
+              "six_to_12": 185,
+              "twelve_plus": 223
+            },
+            {
+              "date": "2024-04-25",
+              "total": 1558,
+              "under_6": 1144,
+              "six_to_12": 216,
+              "twelve_plus": 198
+            },
+            {
+              "date": "2024-05-30",
+              "total": 1581,
+              "under_6": 1163,
+              "six_to_12": 227,
+              "twelve_plus": 191
+            },
+            {
+              "date": "2024-06-27",
+              "total": 1883,
+              "under_6": 1473,
+              "six_to_12": 209,
+              "twelve_plus": 201
+            },
+            {
+              "date": "2024-07-25",
+              "total": 1571,
+              "under_6": 1214,
+              "six_to_12": 167,
+              "twelve_plus": 190
+            },
+            {
+              "date": "2024-08-29",
+              "total": 1263,
+              "under_6": 947,
+              "six_to_12": 146,
+              "twelve_plus": 170
+            },
+            {
+              "date": "2024-09-26",
+              "total": 1175,
+              "under_6": 881,
+              "six_to_12": 145,
+              "twelve_plus": 149
+            },
+            {
+              "date": "2024-10-31",
+              "total": 1272,
+              "under_6": 996,
+              "six_to_12": 161,
+              "twelve_plus": 115
+            },
+            {
+              "date": "2024-11-28",
+              "total": 1301,
+              "under_6": 1030,
+              "six_to_12": 160,
+              "twelve_plus": 111
+            },
+            {
+              "date": "2024-12-19",
+              "total": 1417,
+              "under_6": 1167,
+              "six_to_12": 139,
+              "twelve_plus": 111
+            },
+            {
+              "date": "2025-01-30",
+              "total": 1781,
+              "under_6": 1475,
+              "six_to_12": 170,
+              "twelve_plus": 136
+            },
+            {
+              "date": "2025-02-27",
+              "total": 1994,
+              "under_6": 1628,
+              "six_to_12": 200,
+              "twelve_plus": 166
+            },
+            {
+              "date": "2025-03-27",
+              "total": 2147,
+              "under_6": 1723,
+              "six_to_12": 259,
+              "twelve_plus": 165
+            },
+            {
+              "date": "2025-04-24",
+              "total": 2069,
+              "under_6": 1639,
+              "six_to_12": 283,
+              "twelve_plus": 147
+            },
+            {
+              "date": "2025-05-29",
+              "total": 2265,
+              "under_6": 1744,
+              "six_to_12": 346,
+              "twelve_plus": 175
+            },
+            {
+              "date": "2025-06-26",
+              "total": 2126,
+              "under_6": 1622,
+              "six_to_12": 347,
+              "twelve_plus": 157
+            },
+            {
+              "date": "2025-07-31",
+              "total": 1976,
+              "under_6": 1544,
+              "six_to_12": 296,
+              "twelve_plus": 136
+            },
+            {
+              "date": "2025-08-28",
+              "total": 1827,
+              "under_6": 1413,
+              "six_to_12": 280,
+              "twelve_plus": 134
+            },
+            {
+              "date": "2025-09-25",
+              "total": 1963,
+              "under_6": 1508,
+              "six_to_12": 304,
+              "twelve_plus": 151
+            },
+            {
+              "date": "2025-10-30",
+              "total": 2268,
+              "under_6": 1828,
+              "six_to_12": 299,
+              "twelve_plus": 141
+            },
+            {
+              "date": "2025-11-27",
+              "total": 2357,
+              "under_6": 1921,
+              "six_to_12": 309,
+              "twelve_plus": 127
+            },
+            {
+              "date": "2025-12-18",
+              "total": 2477,
+              "under_6": 2155,
+              "six_to_12": 252,
+              "twelve_plus": 70
+            },
+            {
+              "date": "2026-01-29",
+              "total": 3090,
+              "under_6": 2549,
+              "six_to_12": 379,
+              "twelve_plus": 162
+            },
+            {
+              "date": "2026-02-26",
+              "total": 3397,
+              "under_6": 2709,
+              "six_to_12": 479,
+              "twelve_plus": 209
+            },
+            {
+              "date": "2026-03-26",
+              "total": 3391,
+              "under_6": 2707,
+              "six_to_12": 508,
+              "twelve_plus": 176
+            },
+            {
+              "date": "2026-04-30",
+              "total": 3681,
+              "under_6": 2800,
+              "six_to_12": 728,
+              "twelve_plus": 153
+            },
+            {
+              "date": "2026-05-28",
+              "total": 3652,
+              "under_6": 2650,
+              "six_to_12": 854,
+              "twelve_plus": 148
+            },
+            {
+              "date": "2026-06-25",
+              "total": 3707,
+              "under_6": 2539,
+              "six_to_12": 1006,
+              "twelve_plus": 162
+            }
+          ]
+        },
+        "Child": {
+          "last_updated": "2026-06-25",
+          "series": [
+            {
+              "date": "2014-01-30",
+              "total": 131,
+              "under_6": 131,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-02-27",
+              "total": 121,
+              "under_6": 119,
+              "six_to_12": 2,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-03-27",
+              "total": 150,
+              "under_6": 141,
+              "six_to_12": 9,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-04-29",
+              "total": 15,
+              "under_6": 15,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-05-29",
+              "total": 19,
+              "under_6": 19,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-06-26",
+              "total": 13,
+              "under_6": 13,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-07-30",
+              "total": 14,
+              "under_6": 14,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-08-28",
+              "total": 10,
+              "under_6": 10,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-09-25",
+              "total": 16,
+              "under_6": 16,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-10-30",
+              "total": 27,
+              "under_6": 27,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-11-27",
+              "total": 39,
+              "under_6": 39,
+              "six_to_12": 0,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2014-12-23",
+              "total": 41,
+              "under_6": 40,
+              "six_to_12": 1,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2015-01-29",
+              "total": 51,
+              "under_6": 46,
+              "six_to_12": 5,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2015-02-26",
+              "total": 53,
+              "under_6": 37,
+              "six_to_12": 15,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2015-03-26",
+              "total": 44,
+              "under_6": 30,
+              "six_to_12": 14,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2015-04-29",
+              "total": 33,
+              "under_6": 22,
+              "six_to_12": 11,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2015-05-28",
+              "total": 44,
+              "under_6": 31,
+              "six_to_12": 13,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2015-06-30",
+              "total": 43,
+              "under_6": 28,
+              "six_to_12": 13,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2015-07-30",
+              "total": 40,
+              "under_6": 25,
+              "six_to_12": 13,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2015-08-27",
+              "total": 47,
+              "under_6": 31,
+              "six_to_12": 13,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2015-09-30",
+              "total": 39,
+              "under_6": 28,
+              "six_to_12": 8,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2015-10-29",
+              "total": 44,
+              "under_6": 37,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2015-11-26",
+              "total": 45,
+              "under_6": 39,
+              "six_to_12": 4,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2015-12-31",
+              "total": 45,
+              "under_6": 35,
+              "six_to_12": 7,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2016-01-28",
+              "total": 43,
+              "under_6": 37,
+              "six_to_12": 4,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-02-25",
+              "total": 35,
+              "under_6": 28,
+              "six_to_12": 6,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2016-03-31",
+              "total": 25,
+              "under_6": 18,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-04-28",
+              "total": 25,
+              "under_6": 20,
+              "six_to_12": 4,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2016-05-31",
+              "total": 36,
+              "under_6": 30,
+              "six_to_12": 4,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-06-30",
+              "total": 34,
+              "under_6": 29,
+              "six_to_12": 2,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2016-07-28",
+              "total": 30,
+              "under_6": 23,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-08-31",
+              "total": 30,
+              "under_6": 24,
+              "six_to_12": 4,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-09-29",
+              "total": 30,
+              "under_6": 23,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-10-27",
+              "total": 34,
+              "under_6": 29,
+              "six_to_12": 3,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2016-11-30",
+              "total": 34,
+              "under_6": 30,
+              "six_to_12": 3,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2016-12-30",
+              "total": 36,
+              "under_6": 32,
+              "six_to_12": 4,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2017-01-31",
+              "total": 40,
+              "under_6": 35,
+              "six_to_12": 3,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-02-28",
+              "total": 26,
+              "under_6": 19,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-03-30",
+              "total": 30,
+              "under_6": 21,
+              "six_to_12": 7,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-04-27",
+              "total": 26,
+              "under_6": 18,
+              "six_to_12": 6,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-05-31",
+              "total": 30,
+              "under_6": 21,
+              "six_to_12": 6,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2017-06-29",
+              "total": 28,
+              "under_6": 21,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-07-27",
+              "total": 29,
+              "under_6": 22,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2017-08-31",
+              "total": 27,
+              "under_6": 26,
+              "six_to_12": 1,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2017-09-28",
+              "total": 27,
+              "under_6": 23,
+              "six_to_12": 3,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2017-10-31",
+              "total": 34,
+              "under_6": 30,
+              "six_to_12": 3,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2017-11-30",
+              "total": 41,
+              "under_6": 37,
+              "six_to_12": 3,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2017-12-29",
+              "total": 45,
+              "under_6": 40,
+              "six_to_12": 4,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2018-01-31",
+              "total": 44,
+              "under_6": 37,
+              "six_to_12": 6,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2018-02-28",
+              "total": 42,
+              "under_6": 34,
+              "six_to_12": 8,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-03-29",
+              "total": 34,
+              "under_6": 26,
+              "six_to_12": 7,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2018-04-26",
+              "total": 33,
+              "under_6": 23,
+              "six_to_12": 10,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-05-31",
+              "total": 31,
+              "under_6": 22,
+              "six_to_12": 9,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-06-28",
+              "total": 33,
+              "under_6": 29,
+              "six_to_12": 4,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-07-27",
+              "total": 30,
+              "under_6": 26,
+              "six_to_12": 2,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2018-08-30",
+              "total": 35,
+              "under_6": 33,
+              "six_to_12": 1,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2018-09-27",
+              "total": 27,
+              "under_6": 26,
+              "six_to_12": 1,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-10-31",
+              "total": 32,
+              "under_6": 30,
+              "six_to_12": 2,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2018-11-29",
+              "total": 31,
+              "under_6": 28,
+              "six_to_12": 2,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2018-12-20",
+              "total": 37,
+              "under_6": 32,
+              "six_to_12": 4,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2019-01-31",
+              "total": 40,
+              "under_6": 33,
+              "six_to_12": 6,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2019-02-28",
+              "total": 39,
+              "under_6": 29,
+              "six_to_12": 9,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2019-03-28",
+              "total": 44,
+              "under_6": 34,
+              "six_to_12": 9,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2019-04-25",
+              "total": 46,
+              "under_6": 38,
+              "six_to_12": 8,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2019-05-30",
+              "total": 49,
+              "under_6": 40,
+              "six_to_12": 8,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2019-06-27",
+              "total": 54,
+              "under_6": 46,
+              "six_to_12": 4,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2019-07-25",
+              "total": 49,
+              "under_6": 42,
+              "six_to_12": 4,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2019-08-30",
+              "total": 53,
+              "under_6": 44,
+              "six_to_12": 5,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2019-09-26",
+              "total": 54,
+              "under_6": 43,
+              "six_to_12": 7,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2019-10-31",
+              "total": 59,
+              "under_6": 46,
+              "six_to_12": 8,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2019-11-28",
+              "total": 59,
+              "under_6": 47,
+              "six_to_12": 8,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2019-12-19",
+              "total": 60,
+              "under_6": 49,
+              "six_to_12": 7,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2020-01-30",
+              "total": 55,
+              "under_6": 47,
+              "six_to_12": 6,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2020-02-27",
+              "total": 60,
+              "under_6": 49,
+              "six_to_12": 7,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2020-03-26",
+              "total": 63,
+              "under_6": 47,
+              "six_to_12": 11,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2020-04-30",
+              "total": 66,
+              "under_6": 39,
+              "six_to_12": 21,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2020-05-28",
+              "total": 67,
+              "under_6": 34,
+              "six_to_12": 26,
+              "twelve_plus": 7
+            },
+            {
+              "date": "2020-06-25",
+              "total": 68,
+              "under_6": 29,
+              "six_to_12": 32,
+              "twelve_plus": 7
+            },
+            {
+              "date": "2020-07-30",
+              "total": 71,
+              "under_6": 26,
+              "six_to_12": 39,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2020-08-27",
+              "total": 73,
+              "under_6": 24,
+              "six_to_12": 41,
+              "twelve_plus": 8
+            },
+            {
+              "date": "2020-09-24",
+              "total": 77,
+              "under_6": 31,
+              "six_to_12": 33,
+              "twelve_plus": 13
+            },
+            {
+              "date": "2020-10-29",
+              "total": 79,
+              "under_6": 31,
+              "six_to_12": 27,
+              "twelve_plus": 21
+            },
+            {
+              "date": "2020-11-26",
+              "total": 86,
+              "under_6": 38,
+              "six_to_12": 23,
+              "twelve_plus": 25
+            },
+            {
+              "date": "2020-12-23",
+              "total": 89,
+              "under_6": 41,
+              "six_to_12": 17,
+              "twelve_plus": 31
+            },
+            {
+              "date": "2021-01-28",
+              "total": 92,
+              "under_6": 41,
+              "six_to_12": 15,
+              "twelve_plus": 36
+            },
+            {
+              "date": "2021-02-25",
+              "total": 93,
+              "under_6": 37,
+              "six_to_12": 17,
+              "twelve_plus": 39
+            },
+            {
+              "date": "2021-03-25",
+              "total": 95,
+              "under_6": 32,
+              "six_to_12": 22,
+              "twelve_plus": 41
+            },
+            {
+              "date": "2021-04-29",
+              "total": 89,
+              "under_6": 29,
+              "six_to_12": 25,
+              "twelve_plus": 35
+            },
+            {
+              "date": "2021-05-13",
+              "total": 90,
+              "under_6": 27,
+              "six_to_12": 29,
+              "twelve_plus": 34
+            },
+            {
+              "date": "2021-07-29",
+              "total": 91,
+              "under_6": 22,
+              "six_to_12": 27,
+              "twelve_plus": 42
+            },
+            {
+              "date": "2021-08-26",
+              "total": 83,
+              "under_6": 23,
+              "six_to_12": 22,
+              "twelve_plus": 38
+            },
+            {
+              "date": "2021-09-30",
+              "total": 80,
+              "under_6": 29,
+              "six_to_12": 14,
+              "twelve_plus": 37
+            },
+            {
+              "date": "2021-10-28",
+              "total": 68,
+              "under_6": 30,
+              "six_to_12": 9,
+              "twelve_plus": 29
+            },
+            {
+              "date": "2021-11-25",
+              "total": 66,
+              "under_6": 30,
+              "six_to_12": 8,
+              "twelve_plus": 28
+            },
+            {
+              "date": "2021-12-23",
+              "total": 71,
+              "under_6": 28,
+              "six_to_12": 8,
+              "twelve_plus": 35
+            },
+            {
+              "date": "2022-01-27",
+              "total": 76,
+              "under_6": 30,
+              "six_to_12": 9,
+              "twelve_plus": 37
+            },
+            {
+              "date": "2022-02-24",
+              "total": 77,
+              "under_6": 37,
+              "six_to_12": 7,
+              "twelve_plus": 33
+            },
+            {
+              "date": "2022-03-31",
+              "total": 88,
+              "under_6": 34,
+              "six_to_12": 20,
+              "twelve_plus": 34
+            },
+            {
+              "date": "2022-04-28",
+              "total": 86,
+              "under_6": 35,
+              "six_to_12": 17,
+              "twelve_plus": 34
+            },
+            {
+              "date": "2022-05-26",
+              "total": 83,
+              "under_6": 37,
+              "six_to_12": 18,
+              "twelve_plus": 28
+            },
+            {
+              "date": "2022-06-30",
+              "total": 88,
+              "under_6": 45,
+              "six_to_12": 18,
+              "twelve_plus": 25
+            },
+            {
+              "date": "2022-07-28",
+              "total": 98,
+              "under_6": 45,
+              "six_to_12": 22,
+              "twelve_plus": 31
+            },
+            {
+              "date": "2022-08-25",
+              "total": 90,
+              "under_6": 44,
+              "six_to_12": 17,
+              "twelve_plus": 29
+            },
+            {
+              "date": "2022-09-29",
+              "total": 93,
+              "under_6": 49,
+              "six_to_12": 16,
+              "twelve_plus": 28
+            },
+            {
+              "date": "2022-10-27",
+              "total": 81,
+              "under_6": 40,
+              "six_to_12": 14,
+              "twelve_plus": 27
+            },
+            {
+              "date": "2022-11-24",
+              "total": 80,
+              "under_6": 44,
+              "six_to_12": 15,
+              "twelve_plus": 21
+            },
+            {
+              "date": "2022-12-22",
+              "total": 74,
+              "under_6": 37,
+              "six_to_12": 17,
+              "twelve_plus": 20
+            },
+            {
+              "date": "2023-01-26",
+              "total": 89,
+              "under_6": 39,
+              "six_to_12": 22,
+              "twelve_plus": 28
+            },
+            {
+              "date": "2023-02-23",
+              "total": 84,
+              "under_6": 38,
+              "six_to_12": 20,
+              "twelve_plus": 26
+            },
+            {
+              "date": "2023-03-30",
+              "total": 69,
+              "under_6": 39,
+              "six_to_12": 13,
+              "twelve_plus": 17
+            },
+            {
+              "date": "2023-04-27",
+              "total": 79,
+              "under_6": 41,
+              "six_to_12": 19,
+              "twelve_plus": 19
+            },
+            {
+              "date": "2023-05-25",
+              "total": 67,
+              "under_6": 26,
+              "six_to_12": 22,
+              "twelve_plus": 19
+            },
+            {
+              "date": "2023-06-29",
+              "total": 68,
+              "under_6": 31,
+              "six_to_12": 15,
+              "twelve_plus": 22
+            },
+            {
+              "date": "2023-07-27",
+              "total": 58,
+              "under_6": 28,
+              "six_to_12": 13,
+              "twelve_plus": 17
+            },
+            {
+              "date": "2023-08-31",
+              "total": 63,
+              "under_6": 32,
+              "six_to_12": 14,
+              "twelve_plus": 17
+            },
+            {
+              "date": "2023-09-28",
+              "total": 58,
+              "under_6": 30,
+              "six_to_12": 13,
+              "twelve_plus": 15
+            },
+            {
+              "date": "2023-10-26",
+              "total": 51,
+              "under_6": 25,
+              "six_to_12": 16,
+              "twelve_plus": 10
+            },
+            {
+              "date": "2023-11-30",
+              "total": 50,
+              "under_6": 28,
+              "six_to_12": 10,
+              "twelve_plus": 12
+            },
+            {
+              "date": "2023-12-28",
+              "total": 51,
+              "under_6": 30,
+              "six_to_12": 9,
+              "twelve_plus": 12
+            },
+            {
+              "date": "2024-01-25",
+              "total": 45,
+              "under_6": 32,
+              "six_to_12": 8,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2024-02-29",
+              "total": 31,
+              "under_6": 20,
+              "six_to_12": 5,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2024-03-28",
+              "total": 21,
+              "under_6": 15,
+              "six_to_12": 2,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2024-04-25",
+              "total": 25,
+              "under_6": 19,
+              "six_to_12": 0,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2024-05-30",
+              "total": 18,
+              "under_6": 15,
+              "six_to_12": 0,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2024-06-27",
+              "total": 32,
+              "under_6": 28,
+              "six_to_12": 2,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2024-07-25",
+              "total": 29,
+              "under_6": 23,
+              "six_to_12": 2,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2024-08-29",
+              "total": 35,
+              "under_6": 30,
+              "six_to_12": 3,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2024-09-26",
+              "total": 44,
+              "under_6": 36,
+              "six_to_12": 2,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2024-10-31",
+              "total": 48,
+              "under_6": 41,
+              "six_to_12": 2,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2024-11-28",
+              "total": 49,
+              "under_6": 43,
+              "six_to_12": 4,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2024-12-19",
+              "total": 44,
+              "under_6": 34,
+              "six_to_12": 10,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2025-01-30",
+              "total": 51,
+              "under_6": 33,
+              "six_to_12": 16,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2025-02-27",
+              "total": 56,
+              "under_6": 37,
+              "six_to_12": 15,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2025-03-27",
+              "total": 61,
+              "under_6": 45,
+              "six_to_12": 14,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2025-04-24",
+              "total": 62,
+              "under_6": 37,
+              "six_to_12": 24,
+              "twelve_plus": 1
+            },
+            {
+              "date": "2025-05-29",
+              "total": 60,
+              "under_6": 35,
+              "six_to_12": 19,
+              "twelve_plus": 6
+            },
+            {
+              "date": "2025-06-26",
+              "total": 58,
+              "under_6": 33,
+              "six_to_12": 20,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2025-07-31",
+              "total": 49,
+              "under_6": 31,
+              "six_to_12": 16,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2025-08-28",
+              "total": 36,
+              "under_6": 26,
+              "six_to_12": 8,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2025-09-25",
+              "total": 26,
+              "under_6": 17,
+              "six_to_12": 4,
+              "twelve_plus": 5
+            },
+            {
+              "date": "2025-10-30",
+              "total": 37,
+              "under_6": 30,
+              "six_to_12": 7,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2025-11-27",
+              "total": 42,
+              "under_6": 35,
+              "six_to_12": 4,
+              "twelve_plus": 3
+            },
+            {
+              "date": "2025-12-18",
+              "total": 46,
+              "under_6": 39,
+              "six_to_12": 5,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2026-01-29",
+              "total": 59,
+              "under_6": 51,
+              "six_to_12": 4,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2026-02-26",
+              "total": 65,
+              "under_6": 55,
+              "six_to_12": 6,
+              "twelve_plus": 4
+            },
+            {
+              "date": "2026-03-26",
+              "total": 59,
+              "under_6": 46,
+              "six_to_12": 11,
+              "twelve_plus": 2
+            },
+            {
+              "date": "2026-04-30",
+              "total": 62,
+              "under_6": 47,
+              "six_to_12": 15,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2026-05-28",
+              "total": 65,
+              "under_6": 45,
+              "six_to_12": 20,
+              "twelve_plus": 0
+            },
+            {
+              "date": "2026-06-25",
+              "total": 63,
+              "under_6": 38,
+              "six_to_12": 25,
+              "twelve_plus": 0
+            }
+          ]
         }
-      ]
+      }
     },
-    "Child": {
-      "last_updated": "2026-06-25",
-      "series": [
-        {
-          "date": "2014-01-30",
-          "total": 131,
-          "under_6": 131,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-02-27",
-          "total": 121,
-          "under_6": 119,
-          "six_to_12": 2,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-03-27",
-          "total": 150,
-          "under_6": 141,
-          "six_to_12": 9,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-04-29",
-          "total": 15,
-          "under_6": 15,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-05-29",
-          "total": 19,
-          "under_6": 19,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-06-26",
-          "total": 13,
-          "under_6": 13,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-07-30",
-          "total": 14,
-          "under_6": 14,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-08-28",
-          "total": 10,
-          "under_6": 10,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-09-25",
-          "total": 16,
-          "under_6": 16,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-10-30",
-          "total": 27,
-          "under_6": 27,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-11-27",
-          "total": 39,
-          "under_6": 39,
-          "six_to_12": 0,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2014-12-23",
-          "total": 41,
-          "under_6": 40,
-          "six_to_12": 1,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2015-01-29",
-          "total": 51,
-          "under_6": 46,
-          "six_to_12": 5,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2015-02-26",
-          "total": 53,
-          "under_6": 37,
-          "six_to_12": 15,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2015-03-26",
-          "total": 44,
-          "under_6": 30,
-          "six_to_12": 14,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2015-04-29",
-          "total": 33,
-          "under_6": 22,
-          "six_to_12": 11,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2015-05-28",
-          "total": 44,
-          "under_6": 31,
-          "six_to_12": 13,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2015-06-30",
-          "total": 43,
-          "under_6": 28,
-          "six_to_12": 13,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2015-07-30",
-          "total": 40,
-          "under_6": 25,
-          "six_to_12": 13,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2015-08-27",
-          "total": 47,
-          "under_6": 31,
-          "six_to_12": 13,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2015-09-30",
-          "total": 39,
-          "under_6": 28,
-          "six_to_12": 8,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2015-10-29",
-          "total": 44,
-          "under_6": 37,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2015-11-26",
-          "total": 45,
-          "under_6": 39,
-          "six_to_12": 4,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2015-12-31",
-          "total": 45,
-          "under_6": 35,
-          "six_to_12": 7,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2016-01-28",
-          "total": 43,
-          "under_6": 37,
-          "six_to_12": 4,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-02-25",
-          "total": 35,
-          "under_6": 28,
-          "six_to_12": 6,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2016-03-31",
-          "total": 25,
-          "under_6": 18,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-04-28",
-          "total": 25,
-          "under_6": 20,
-          "six_to_12": 4,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2016-05-31",
-          "total": 36,
-          "under_6": 30,
-          "six_to_12": 4,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-06-30",
-          "total": 34,
-          "under_6": 29,
-          "six_to_12": 2,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2016-07-28",
-          "total": 30,
-          "under_6": 23,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-08-31",
-          "total": 30,
-          "under_6": 24,
-          "six_to_12": 4,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-09-29",
-          "total": 30,
-          "under_6": 23,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-10-27",
-          "total": 34,
-          "under_6": 29,
-          "six_to_12": 3,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2016-11-30",
-          "total": 34,
-          "under_6": 30,
-          "six_to_12": 3,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2016-12-30",
-          "total": 36,
-          "under_6": 32,
-          "six_to_12": 4,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2017-01-31",
-          "total": 40,
-          "under_6": 35,
-          "six_to_12": 3,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-02-28",
-          "total": 26,
-          "under_6": 19,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-03-30",
-          "total": 30,
-          "under_6": 21,
-          "six_to_12": 7,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-04-27",
-          "total": 26,
-          "under_6": 18,
-          "six_to_12": 6,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-05-31",
-          "total": 30,
-          "under_6": 21,
-          "six_to_12": 6,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2017-06-29",
-          "total": 28,
-          "under_6": 21,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-07-27",
-          "total": 29,
-          "under_6": 22,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2017-08-31",
-          "total": 27,
-          "under_6": 26,
-          "six_to_12": 1,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2017-09-28",
-          "total": 27,
-          "under_6": 23,
-          "six_to_12": 3,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2017-10-31",
-          "total": 34,
-          "under_6": 30,
-          "six_to_12": 3,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2017-11-30",
-          "total": 41,
-          "under_6": 37,
-          "six_to_12": 3,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2017-12-29",
-          "total": 45,
-          "under_6": 40,
-          "six_to_12": 4,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2018-01-31",
-          "total": 44,
-          "under_6": 37,
-          "six_to_12": 6,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2018-02-28",
-          "total": 42,
-          "under_6": 34,
-          "six_to_12": 8,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-03-29",
-          "total": 34,
-          "under_6": 26,
-          "six_to_12": 7,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2018-04-26",
-          "total": 33,
-          "under_6": 23,
-          "six_to_12": 10,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-05-31",
-          "total": 31,
-          "under_6": 22,
-          "six_to_12": 9,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-06-28",
-          "total": 33,
-          "under_6": 29,
-          "six_to_12": 4,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-07-27",
-          "total": 30,
-          "under_6": 26,
-          "six_to_12": 2,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2018-08-30",
-          "total": 35,
-          "under_6": 33,
-          "six_to_12": 1,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2018-09-27",
-          "total": 27,
-          "under_6": 26,
-          "six_to_12": 1,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-10-31",
-          "total": 32,
-          "under_6": 30,
-          "six_to_12": 2,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2018-11-29",
-          "total": 31,
-          "under_6": 28,
-          "six_to_12": 2,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2018-12-20",
-          "total": 37,
-          "under_6": 32,
-          "six_to_12": 4,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2019-01-31",
-          "total": 40,
-          "under_6": 33,
-          "six_to_12": 6,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2019-02-28",
-          "total": 39,
-          "under_6": 29,
-          "six_to_12": 9,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2019-03-28",
-          "total": 44,
-          "under_6": 34,
-          "six_to_12": 9,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2019-04-25",
-          "total": 46,
-          "under_6": 38,
-          "six_to_12": 8,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2019-05-30",
-          "total": 49,
-          "under_6": 40,
-          "six_to_12": 8,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2019-06-27",
-          "total": 54,
-          "under_6": 46,
-          "six_to_12": 4,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2019-07-25",
-          "total": 49,
-          "under_6": 42,
-          "six_to_12": 4,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2019-08-30",
-          "total": 53,
-          "under_6": 44,
-          "six_to_12": 5,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2019-09-26",
-          "total": 54,
-          "under_6": 43,
-          "six_to_12": 7,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2019-10-31",
-          "total": 59,
-          "under_6": 46,
-          "six_to_12": 8,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2019-11-28",
-          "total": 59,
-          "under_6": 47,
-          "six_to_12": 8,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2019-12-19",
-          "total": 60,
-          "under_6": 49,
-          "six_to_12": 7,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2020-01-30",
-          "total": 55,
-          "under_6": 47,
-          "six_to_12": 6,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2020-02-27",
-          "total": 60,
-          "under_6": 49,
-          "six_to_12": 7,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2020-03-26",
-          "total": 63,
-          "under_6": 47,
-          "six_to_12": 11,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2020-04-30",
-          "total": 66,
-          "under_6": 39,
-          "six_to_12": 21,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2020-05-28",
-          "total": 67,
-          "under_6": 34,
-          "six_to_12": 26,
-          "twelve_plus": 7
-        },
-        {
-          "date": "2020-06-25",
-          "total": 68,
-          "under_6": 29,
-          "six_to_12": 32,
-          "twelve_plus": 7
-        },
-        {
-          "date": "2020-07-30",
-          "total": 71,
-          "under_6": 26,
-          "six_to_12": 39,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2020-08-27",
-          "total": 73,
-          "under_6": 24,
-          "six_to_12": 41,
-          "twelve_plus": 8
-        },
-        {
-          "date": "2020-09-24",
-          "total": 77,
-          "under_6": 31,
-          "six_to_12": 33,
-          "twelve_plus": 13
-        },
-        {
-          "date": "2020-10-29",
-          "total": 79,
-          "under_6": 31,
-          "six_to_12": 27,
-          "twelve_plus": 21
-        },
-        {
-          "date": "2020-11-26",
-          "total": 86,
-          "under_6": 38,
-          "six_to_12": 23,
-          "twelve_plus": 25
-        },
-        {
-          "date": "2020-12-23",
-          "total": 89,
-          "under_6": 41,
-          "six_to_12": 17,
-          "twelve_plus": 31
-        },
-        {
-          "date": "2021-01-28",
-          "total": 92,
-          "under_6": 41,
-          "six_to_12": 15,
-          "twelve_plus": 36
-        },
-        {
-          "date": "2021-02-25",
-          "total": 93,
-          "under_6": 37,
-          "six_to_12": 17,
-          "twelve_plus": 39
-        },
-        {
-          "date": "2021-03-25",
-          "total": 95,
-          "under_6": 32,
-          "six_to_12": 22,
-          "twelve_plus": 41
-        },
-        {
-          "date": "2021-04-29",
-          "total": 89,
-          "under_6": 29,
-          "six_to_12": 25,
-          "twelve_plus": 35
-        },
-        {
-          "date": "2021-05-13",
-          "total": 90,
-          "under_6": 27,
-          "six_to_12": 29,
-          "twelve_plus": 34
-        },
-        {
-          "date": "2021-07-29",
-          "total": 91,
-          "under_6": 22,
-          "six_to_12": 27,
-          "twelve_plus": 42
-        },
-        {
-          "date": "2021-08-26",
-          "total": 83,
-          "under_6": 23,
-          "six_to_12": 22,
-          "twelve_plus": 38
-        },
-        {
-          "date": "2021-09-30",
-          "total": 80,
-          "under_6": 29,
-          "six_to_12": 14,
-          "twelve_plus": 37
-        },
-        {
-          "date": "2021-10-28",
-          "total": 68,
-          "under_6": 30,
-          "six_to_12": 9,
-          "twelve_plus": 29
-        },
-        {
-          "date": "2021-11-25",
-          "total": 66,
-          "under_6": 30,
-          "six_to_12": 8,
-          "twelve_plus": 28
-        },
-        {
-          "date": "2021-12-23",
-          "total": 71,
-          "under_6": 28,
-          "six_to_12": 8,
-          "twelve_plus": 35
-        },
-        {
-          "date": "2022-01-27",
-          "total": 76,
-          "under_6": 30,
-          "six_to_12": 9,
-          "twelve_plus": 37
-        },
-        {
-          "date": "2022-02-24",
-          "total": 77,
-          "under_6": 37,
-          "six_to_12": 7,
-          "twelve_plus": 33
-        },
-        {
-          "date": "2022-03-31",
-          "total": 88,
-          "under_6": 34,
-          "six_to_12": 20,
-          "twelve_plus": 34
-        },
-        {
-          "date": "2022-04-28",
-          "total": 86,
-          "under_6": 35,
-          "six_to_12": 17,
-          "twelve_plus": 34
-        },
-        {
-          "date": "2022-05-26",
-          "total": 83,
-          "under_6": 37,
-          "six_to_12": 18,
-          "twelve_plus": 28
-        },
-        {
-          "date": "2022-06-30",
-          "total": 88,
-          "under_6": 45,
-          "six_to_12": 18,
-          "twelve_plus": 25
-        },
-        {
-          "date": "2022-07-28",
-          "total": 98,
-          "under_6": 45,
-          "six_to_12": 22,
-          "twelve_plus": 31
-        },
-        {
-          "date": "2022-08-25",
-          "total": 90,
-          "under_6": 44,
-          "six_to_12": 17,
-          "twelve_plus": 29
-        },
-        {
-          "date": "2022-09-29",
-          "total": 93,
-          "under_6": 49,
-          "six_to_12": 16,
-          "twelve_plus": 28
-        },
-        {
-          "date": "2022-10-27",
-          "total": 81,
-          "under_6": 40,
-          "six_to_12": 14,
-          "twelve_plus": 27
-        },
-        {
-          "date": "2022-11-24",
-          "total": 80,
-          "under_6": 44,
-          "six_to_12": 15,
-          "twelve_plus": 21
-        },
-        {
-          "date": "2022-12-22",
-          "total": 74,
-          "under_6": 37,
-          "six_to_12": 17,
-          "twelve_plus": 20
-        },
-        {
-          "date": "2023-01-26",
-          "total": 89,
-          "under_6": 39,
-          "six_to_12": 22,
-          "twelve_plus": 28
-        },
-        {
-          "date": "2023-02-23",
-          "total": 84,
-          "under_6": 38,
-          "six_to_12": 20,
-          "twelve_plus": 26
-        },
-        {
-          "date": "2023-03-30",
-          "total": 69,
-          "under_6": 39,
-          "six_to_12": 13,
-          "twelve_plus": 17
-        },
-        {
-          "date": "2023-04-27",
-          "total": 79,
-          "under_6": 41,
-          "six_to_12": 19,
-          "twelve_plus": 19
-        },
-        {
-          "date": "2023-05-25",
-          "total": 67,
-          "under_6": 26,
-          "six_to_12": 22,
-          "twelve_plus": 19
-        },
-        {
-          "date": "2023-06-29",
-          "total": 68,
-          "under_6": 31,
-          "six_to_12": 15,
-          "twelve_plus": 22
-        },
-        {
-          "date": "2023-07-27",
-          "total": 58,
-          "under_6": 28,
-          "six_to_12": 13,
-          "twelve_plus": 17
-        },
-        {
-          "date": "2023-08-31",
-          "total": 63,
-          "under_6": 32,
-          "six_to_12": 14,
-          "twelve_plus": 17
-        },
-        {
-          "date": "2023-09-28",
-          "total": 58,
-          "under_6": 30,
-          "six_to_12": 13,
-          "twelve_plus": 15
-        },
-        {
-          "date": "2023-10-26",
-          "total": 51,
-          "under_6": 25,
-          "six_to_12": 16,
-          "twelve_plus": 10
-        },
-        {
-          "date": "2023-11-30",
-          "total": 50,
-          "under_6": 28,
-          "six_to_12": 10,
-          "twelve_plus": 12
-        },
-        {
-          "date": "2023-12-28",
-          "total": 51,
-          "under_6": 30,
-          "six_to_12": 9,
-          "twelve_plus": 12
-        },
-        {
-          "date": "2024-01-25",
-          "total": 45,
-          "under_6": 32,
-          "six_to_12": 8,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2024-02-29",
-          "total": 31,
-          "under_6": 20,
-          "six_to_12": 5,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2024-03-28",
-          "total": 21,
-          "under_6": 15,
-          "six_to_12": 2,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2024-04-25",
-          "total": 25,
-          "under_6": 19,
-          "six_to_12": 0,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2024-05-30",
-          "total": 18,
-          "under_6": 15,
-          "six_to_12": 0,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2024-06-27",
-          "total": 32,
-          "under_6": 28,
-          "six_to_12": 2,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2024-07-25",
-          "total": 29,
-          "under_6": 23,
-          "six_to_12": 2,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2024-08-29",
-          "total": 35,
-          "under_6": 30,
-          "six_to_12": 3,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2024-09-26",
-          "total": 44,
-          "under_6": 36,
-          "six_to_12": 2,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2024-10-31",
-          "total": 48,
-          "under_6": 41,
-          "six_to_12": 2,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2024-11-28",
-          "total": 49,
-          "under_6": 43,
-          "six_to_12": 4,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2024-12-19",
-          "total": 44,
-          "under_6": 34,
-          "six_to_12": 10,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2025-01-30",
-          "total": 51,
-          "under_6": 33,
-          "six_to_12": 16,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2025-02-27",
-          "total": 56,
-          "under_6": 37,
-          "six_to_12": 15,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2025-03-27",
-          "total": 61,
-          "under_6": 45,
-          "six_to_12": 14,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2025-04-24",
-          "total": 62,
-          "under_6": 37,
-          "six_to_12": 24,
-          "twelve_plus": 1
-        },
-        {
-          "date": "2025-05-29",
-          "total": 60,
-          "under_6": 35,
-          "six_to_12": 19,
-          "twelve_plus": 6
-        },
-        {
-          "date": "2025-06-26",
-          "total": 58,
-          "under_6": 33,
-          "six_to_12": 20,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2025-07-31",
-          "total": 49,
-          "under_6": 31,
-          "six_to_12": 16,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2025-08-28",
-          "total": 36,
-          "under_6": 26,
-          "six_to_12": 8,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2025-09-25",
-          "total": 26,
-          "under_6": 17,
-          "six_to_12": 4,
-          "twelve_plus": 5
-        },
-        {
-          "date": "2025-10-30",
-          "total": 37,
-          "under_6": 30,
-          "six_to_12": 7,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2025-11-27",
-          "total": 42,
-          "under_6": 35,
-          "six_to_12": 4,
-          "twelve_plus": 3
-        },
-        {
-          "date": "2025-12-18",
-          "total": 46,
-          "under_6": 39,
-          "six_to_12": 5,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2026-01-29",
-          "total": 59,
-          "under_6": 51,
-          "six_to_12": 4,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2026-02-26",
-          "total": 65,
-          "under_6": 55,
-          "six_to_12": 6,
-          "twelve_plus": 4
-        },
-        {
-          "date": "2026-03-26",
-          "total": 59,
-          "under_6": 46,
-          "six_to_12": 11,
-          "twelve_plus": 2
-        },
-        {
-          "date": "2026-04-30",
-          "total": 62,
-          "under_6": 47,
-          "six_to_12": 15,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2026-05-28",
-          "total": 65,
-          "under_6": 45,
-          "six_to_12": 20,
-          "twelve_plus": 0
-        },
-        {
-          "date": "2026-06-25",
-          "total": 63,
-          "under_6": 38,
-          "six_to_12": 25,
-          "twelve_plus": 0
+    "op": {
+      "methodology_note": "Outpatient appointments have no Inpatient/Day Case split to sum across (a single appointment type), unlike IPDC. Time bands grouped into Under 6 / 6-12 / 12+ months by starting wait length, since NTPF's own band boundaries changed at the same point (2022+ files use 0-6/6-12/12-18/18+ months; pre-2021 files use 0-3/3-6/6-9/9-12/12+ months) and are not directly comparable band-for-band. Outpatient data is only available from 2018 onward \u2014 NTPF has not published OP data for 2014-2017, unlike IPDC which covers the full range.",
+      "known_limitations": "Adult and Child are NTPF's own classification (no further age breakdown is published). A hospital with no patients in a population shows an empty chart for that toggle rather than being hidden.",
+      "populations": {
+        "Adult": {
+          "last_updated": "2026-06-25",
+          "series": [
+            {
+              "date": "2021-04-29",
+              "total": 17918,
+              "under_6": 5949,
+              "six_to_12": 3177,
+              "twelve_plus": 8792
+            },
+            {
+              "date": "2021-05-13",
+              "total": 18096,
+              "under_6": 6014,
+              "six_to_12": 3338,
+              "twelve_plus": 8744
+            },
+            {
+              "date": "2021-07-29",
+              "total": 18861,
+              "under_6": 6529,
+              "six_to_12": 3410,
+              "twelve_plus": 8922
+            },
+            {
+              "date": "2021-08-26",
+              "total": 18776,
+              "under_6": 6637,
+              "six_to_12": 3309,
+              "twelve_plus": 8830
+            },
+            {
+              "date": "2021-09-30",
+              "total": 17751,
+              "under_6": 6738,
+              "six_to_12": 2967,
+              "twelve_plus": 8046
+            },
+            {
+              "date": "2021-10-28",
+              "total": 17387,
+              "under_6": 6890,
+              "six_to_12": 2925,
+              "twelve_plus": 7572
+            },
+            {
+              "date": "2021-11-25",
+              "total": 16935,
+              "under_6": 7031,
+              "six_to_12": 2711,
+              "twelve_plus": 7193
+            },
+            {
+              "date": "2021-12-23",
+              "total": 16494,
+              "under_6": 7040,
+              "six_to_12": 2579,
+              "twelve_plus": 6875
+            },
+            {
+              "date": "2022-01-27",
+              "total": 16662,
+              "under_6": 7111,
+              "six_to_12": 2996,
+              "twelve_plus": 6555
+            },
+            {
+              "date": "2022-02-24",
+              "total": 16705,
+              "under_6": 7284,
+              "six_to_12": 3210,
+              "twelve_plus": 6211
+            },
+            {
+              "date": "2022-03-31",
+              "total": 16477,
+              "under_6": 7256,
+              "six_to_12": 3159,
+              "twelve_plus": 6062
+            },
+            {
+              "date": "2022-04-28",
+              "total": 16495,
+              "under_6": 7264,
+              "six_to_12": 3313,
+              "twelve_plus": 5918
+            },
+            {
+              "date": "2022-05-26",
+              "total": 16507,
+              "under_6": 7315,
+              "six_to_12": 3400,
+              "twelve_plus": 5792
+            },
+            {
+              "date": "2022-06-30",
+              "total": 16738,
+              "under_6": 7444,
+              "six_to_12": 3502,
+              "twelve_plus": 5792
+            },
+            {
+              "date": "2022-07-28",
+              "total": 16952,
+              "under_6": 7580,
+              "six_to_12": 3453,
+              "twelve_plus": 5919
+            },
+            {
+              "date": "2022-08-25",
+              "total": 16941,
+              "under_6": 7417,
+              "six_to_12": 3533,
+              "twelve_plus": 5991
+            },
+            {
+              "date": "2022-09-29",
+              "total": 17287,
+              "under_6": 7602,
+              "six_to_12": 3533,
+              "twelve_plus": 6152
+            },
+            {
+              "date": "2022-10-27",
+              "total": 16695,
+              "under_6": 7581,
+              "six_to_12": 3309,
+              "twelve_plus": 5805
+            },
+            {
+              "date": "2022-11-24",
+              "total": 15473,
+              "under_6": 7427,
+              "six_to_12": 2701,
+              "twelve_plus": 5345
+            },
+            {
+              "date": "2022-12-22",
+              "total": 14551,
+              "under_6": 7010,
+              "six_to_12": 2581,
+              "twelve_plus": 4960
+            },
+            {
+              "date": "2023-01-26",
+              "total": 15131,
+              "under_6": 7200,
+              "six_to_12": 2857,
+              "twelve_plus": 5074
+            },
+            {
+              "date": "2023-02-23",
+              "total": 15355,
+              "under_6": 7479,
+              "six_to_12": 2809,
+              "twelve_plus": 5067
+            },
+            {
+              "date": "2023-03-30",
+              "total": 14998,
+              "under_6": 7178,
+              "six_to_12": 2739,
+              "twelve_plus": 5081
+            },
+            {
+              "date": "2023-04-27",
+              "total": 15429,
+              "under_6": 7403,
+              "six_to_12": 2925,
+              "twelve_plus": 5101
+            },
+            {
+              "date": "2023-05-25",
+              "total": 15037,
+              "under_6": 7296,
+              "six_to_12": 2678,
+              "twelve_plus": 5063
+            },
+            {
+              "date": "2023-06-29",
+              "total": 14912,
+              "under_6": 7441,
+              "six_to_12": 2626,
+              "twelve_plus": 4845
+            },
+            {
+              "date": "2023-07-27",
+              "total": 13766,
+              "under_6": 7165,
+              "six_to_12": 2285,
+              "twelve_plus": 4316
+            },
+            {
+              "date": "2023-08-31",
+              "total": 13458,
+              "under_6": 7196,
+              "six_to_12": 2224,
+              "twelve_plus": 4038
+            },
+            {
+              "date": "2023-09-28",
+              "total": 13568,
+              "under_6": 7573,
+              "six_to_12": 2175,
+              "twelve_plus": 3820
+            },
+            {
+              "date": "2023-10-26",
+              "total": 13878,
+              "under_6": 8012,
+              "six_to_12": 2233,
+              "twelve_plus": 3633
+            },
+            {
+              "date": "2023-11-30",
+              "total": 13278,
+              "under_6": 7714,
+              "six_to_12": 2274,
+              "twelve_plus": 3290
+            },
+            {
+              "date": "2023-12-28",
+              "total": 12369,
+              "under_6": 7573,
+              "six_to_12": 2119,
+              "twelve_plus": 2677
+            },
+            {
+              "date": "2024-01-25",
+              "total": 12565,
+              "under_6": 7678,
+              "six_to_12": 2203,
+              "twelve_plus": 2684
+            },
+            {
+              "date": "2024-02-29",
+              "total": 12736,
+              "under_6": 7795,
+              "six_to_12": 2221,
+              "twelve_plus": 2720
+            },
+            {
+              "date": "2024-03-28",
+              "total": 12945,
+              "under_6": 7881,
+              "six_to_12": 2292,
+              "twelve_plus": 2772
+            },
+            {
+              "date": "2024-04-25",
+              "total": 13247,
+              "under_6": 8106,
+              "six_to_12": 2351,
+              "twelve_plus": 2790
+            },
+            {
+              "date": "2024-05-30",
+              "total": 13395,
+              "under_6": 8179,
+              "six_to_12": 2432,
+              "twelve_plus": 2784
+            },
+            {
+              "date": "2024-06-27",
+              "total": 14471,
+              "under_6": 9129,
+              "six_to_12": 2485,
+              "twelve_plus": 2857
+            },
+            {
+              "date": "2024-07-25",
+              "total": 15383,
+              "under_6": 9938,
+              "six_to_12": 2583,
+              "twelve_plus": 2862
+            },
+            {
+              "date": "2024-08-29",
+              "total": 14855,
+              "under_6": 9831,
+              "six_to_12": 2673,
+              "twelve_plus": 2351
+            },
+            {
+              "date": "2024-09-26",
+              "total": 14728,
+              "under_6": 10019,
+              "six_to_12": 2606,
+              "twelve_plus": 2103
+            },
+            {
+              "date": "2024-10-31",
+              "total": 13667,
+              "under_6": 9482,
+              "six_to_12": 2483,
+              "twelve_plus": 1702
+            },
+            {
+              "date": "2024-11-28",
+              "total": 12817,
+              "under_6": 9163,
+              "six_to_12": 2246,
+              "twelve_plus": 1408
+            },
+            {
+              "date": "2024-12-19",
+              "total": 12195,
+              "under_6": 8896,
+              "six_to_12": 2128,
+              "twelve_plus": 1171
+            },
+            {
+              "date": "2025-01-30",
+              "total": 13296,
+              "under_6": 9277,
+              "six_to_12": 2659,
+              "twelve_plus": 1360
+            },
+            {
+              "date": "2025-02-27",
+              "total": 12848,
+              "under_6": 9021,
+              "six_to_12": 2558,
+              "twelve_plus": 1269
+            },
+            {
+              "date": "2025-03-27",
+              "total": 12951,
+              "under_6": 9213,
+              "six_to_12": 2564,
+              "twelve_plus": 1174
+            },
+            {
+              "date": "2025-04-24",
+              "total": 13154,
+              "under_6": 9365,
+              "six_to_12": 2642,
+              "twelve_plus": 1147
+            },
+            {
+              "date": "2025-05-29",
+              "total": 12892,
+              "under_6": 9171,
+              "six_to_12": 2635,
+              "twelve_plus": 1086
+            },
+            {
+              "date": "2025-06-26",
+              "total": 13423,
+              "under_6": 9543,
+              "six_to_12": 2799,
+              "twelve_plus": 1081
+            },
+            {
+              "date": "2025-07-31",
+              "total": 14124,
+              "under_6": 9964,
+              "six_to_12": 2739,
+              "twelve_plus": 1421
+            },
+            {
+              "date": "2025-08-28",
+              "total": 14558,
+              "under_6": 9979,
+              "six_to_12": 2971,
+              "twelve_plus": 1608
+            },
+            {
+              "date": "2025-09-25",
+              "total": 14731,
+              "under_6": 9739,
+              "six_to_12": 3156,
+              "twelve_plus": 1836
+            },
+            {
+              "date": "2025-10-30",
+              "total": 14456,
+              "under_6": 9653,
+              "six_to_12": 3069,
+              "twelve_plus": 1734
+            },
+            {
+              "date": "2025-11-27",
+              "total": 13983,
+              "under_6": 9442,
+              "six_to_12": 2906,
+              "twelve_plus": 1635
+            },
+            {
+              "date": "2025-12-18",
+              "total": 13177,
+              "under_6": 8869,
+              "six_to_12": 2788,
+              "twelve_plus": 1520
+            },
+            {
+              "date": "2026-01-29",
+              "total": 13774,
+              "under_6": 9358,
+              "six_to_12": 2888,
+              "twelve_plus": 1528
+            },
+            {
+              "date": "2026-02-26",
+              "total": 13829,
+              "under_6": 9772,
+              "six_to_12": 2628,
+              "twelve_plus": 1429
+            },
+            {
+              "date": "2026-03-26",
+              "total": 13830,
+              "under_6": 10003,
+              "six_to_12": 2422,
+              "twelve_plus": 1405
+            },
+            {
+              "date": "2026-04-30",
+              "total": 13678,
+              "under_6": 10248,
+              "six_to_12": 2216,
+              "twelve_plus": 1214
+            },
+            {
+              "date": "2026-05-28",
+              "total": 13374,
+              "under_6": 10359,
+              "six_to_12": 1962,
+              "twelve_plus": 1053
+            },
+            {
+              "date": "2026-06-25",
+              "total": 13353,
+              "under_6": 10519,
+              "six_to_12": 1814,
+              "twelve_plus": 1020
+            }
+          ]
+        },
+        "Child": {
+          "last_updated": "2026-06-25",
+          "series": [
+            {
+              "date": "2021-04-29",
+              "total": 2215,
+              "under_6": 748,
+              "six_to_12": 276,
+              "twelve_plus": 1191
+            },
+            {
+              "date": "2021-05-13",
+              "total": 2204,
+              "under_6": 735,
+              "six_to_12": 304,
+              "twelve_plus": 1165
+            },
+            {
+              "date": "2021-07-29",
+              "total": 2129,
+              "under_6": 735,
+              "six_to_12": 248,
+              "twelve_plus": 1146
+            },
+            {
+              "date": "2021-08-26",
+              "total": 2082,
+              "under_6": 705,
+              "six_to_12": 239,
+              "twelve_plus": 1138
+            },
+            {
+              "date": "2021-09-30",
+              "total": 2080,
+              "under_6": 715,
+              "six_to_12": 238,
+              "twelve_plus": 1127
+            },
+            {
+              "date": "2021-10-28",
+              "total": 2134,
+              "under_6": 771,
+              "six_to_12": 224,
+              "twelve_plus": 1139
+            },
+            {
+              "date": "2021-11-25",
+              "total": 2152,
+              "under_6": 842,
+              "six_to_12": 206,
+              "twelve_plus": 1104
+            },
+            {
+              "date": "2021-12-23",
+              "total": 2115,
+              "under_6": 838,
+              "six_to_12": 200,
+              "twelve_plus": 1077
+            },
+            {
+              "date": "2022-01-27",
+              "total": 2106,
+              "under_6": 823,
+              "six_to_12": 235,
+              "twelve_plus": 1048
+            },
+            {
+              "date": "2022-02-24",
+              "total": 2180,
+              "under_6": 887,
+              "six_to_12": 240,
+              "twelve_plus": 1053
+            },
+            {
+              "date": "2022-03-31",
+              "total": 2154,
+              "under_6": 872,
+              "six_to_12": 231,
+              "twelve_plus": 1051
+            },
+            {
+              "date": "2022-04-28",
+              "total": 2160,
+              "under_6": 881,
+              "six_to_12": 239,
+              "twelve_plus": 1040
+            },
+            {
+              "date": "2022-05-26",
+              "total": 2259,
+              "under_6": 964,
+              "six_to_12": 251,
+              "twelve_plus": 1044
+            },
+            {
+              "date": "2022-06-30",
+              "total": 2277,
+              "under_6": 969,
+              "six_to_12": 260,
+              "twelve_plus": 1048
+            },
+            {
+              "date": "2022-07-28",
+              "total": 2290,
+              "under_6": 943,
+              "six_to_12": 277,
+              "twelve_plus": 1070
+            },
+            {
+              "date": "2022-08-25",
+              "total": 2210,
+              "under_6": 873,
+              "six_to_12": 305,
+              "twelve_plus": 1032
+            },
+            {
+              "date": "2022-09-29",
+              "total": 2113,
+              "under_6": 848,
+              "six_to_12": 303,
+              "twelve_plus": 962
+            },
+            {
+              "date": "2022-10-27",
+              "total": 1956,
+              "under_6": 824,
+              "six_to_12": 295,
+              "twelve_plus": 837
+            },
+            {
+              "date": "2022-11-24",
+              "total": 1907,
+              "under_6": 844,
+              "six_to_12": 297,
+              "twelve_plus": 766
+            },
+            {
+              "date": "2022-12-22",
+              "total": 1879,
+              "under_6": 867,
+              "six_to_12": 291,
+              "twelve_plus": 721
+            },
+            {
+              "date": "2023-01-26",
+              "total": 1859,
+              "under_6": 857,
+              "six_to_12": 295,
+              "twelve_plus": 707
+            },
+            {
+              "date": "2023-02-23",
+              "total": 1866,
+              "under_6": 1000,
+              "six_to_12": 283,
+              "twelve_plus": 583
+            },
+            {
+              "date": "2023-03-30",
+              "total": 1961,
+              "under_6": 1129,
+              "six_to_12": 274,
+              "twelve_plus": 558
+            },
+            {
+              "date": "2023-04-27",
+              "total": 2017,
+              "under_6": 1164,
+              "six_to_12": 277,
+              "twelve_plus": 576
+            },
+            {
+              "date": "2023-05-25",
+              "total": 1898,
+              "under_6": 1045,
+              "six_to_12": 285,
+              "twelve_plus": 568
+            },
+            {
+              "date": "2023-06-29",
+              "total": 1915,
+              "under_6": 1069,
+              "six_to_12": 299,
+              "twelve_plus": 547
+            },
+            {
+              "date": "2023-07-27",
+              "total": 1860,
+              "under_6": 1037,
+              "six_to_12": 309,
+              "twelve_plus": 514
+            },
+            {
+              "date": "2023-08-31",
+              "total": 1852,
+              "under_6": 962,
+              "six_to_12": 366,
+              "twelve_plus": 524
+            },
+            {
+              "date": "2023-09-28",
+              "total": 1825,
+              "under_6": 956,
+              "six_to_12": 385,
+              "twelve_plus": 484
+            },
+            {
+              "date": "2023-10-26",
+              "total": 1855,
+              "under_6": 952,
+              "six_to_12": 406,
+              "twelve_plus": 497
+            },
+            {
+              "date": "2023-11-30",
+              "total": 1874,
+              "under_6": 964,
+              "six_to_12": 398,
+              "twelve_plus": 512
+            },
+            {
+              "date": "2023-12-28",
+              "total": 1853,
+              "under_6": 971,
+              "six_to_12": 416,
+              "twelve_plus": 466
+            },
+            {
+              "date": "2024-01-25",
+              "total": 1919,
+              "under_6": 999,
+              "six_to_12": 432,
+              "twelve_plus": 488
+            },
+            {
+              "date": "2024-02-29",
+              "total": 1990,
+              "under_6": 1084,
+              "six_to_12": 380,
+              "twelve_plus": 526
+            },
+            {
+              "date": "2024-03-28",
+              "total": 2013,
+              "under_6": 1106,
+              "six_to_12": 373,
+              "twelve_plus": 534
+            },
+            {
+              "date": "2024-04-25",
+              "total": 1924,
+              "under_6": 1108,
+              "six_to_12": 354,
+              "twelve_plus": 462
+            },
+            {
+              "date": "2024-05-30",
+              "total": 1887,
+              "under_6": 1149,
+              "six_to_12": 335,
+              "twelve_plus": 403
+            },
+            {
+              "date": "2024-06-27",
+              "total": 1927,
+              "under_6": 1159,
+              "six_to_12": 341,
+              "twelve_plus": 427
+            },
+            {
+              "date": "2024-07-25",
+              "total": 1924,
+              "under_6": 1163,
+              "six_to_12": 330,
+              "twelve_plus": 431
+            },
+            {
+              "date": "2024-08-29",
+              "total": 1824,
+              "under_6": 1090,
+              "six_to_12": 340,
+              "twelve_plus": 394
+            },
+            {
+              "date": "2024-09-26",
+              "total": 1703,
+              "under_6": 1046,
+              "six_to_12": 386,
+              "twelve_plus": 271
+            },
+            {
+              "date": "2024-10-31",
+              "total": 1648,
+              "under_6": 1019,
+              "six_to_12": 357,
+              "twelve_plus": 272
+            },
+            {
+              "date": "2024-11-28",
+              "total": 1610,
+              "under_6": 1001,
+              "six_to_12": 353,
+              "twelve_plus": 256
+            },
+            {
+              "date": "2024-12-19",
+              "total": 1560,
+              "under_6": 991,
+              "six_to_12": 333,
+              "twelve_plus": 236
+            },
+            {
+              "date": "2025-01-30",
+              "total": 1612,
+              "under_6": 980,
+              "six_to_12": 362,
+              "twelve_plus": 270
+            },
+            {
+              "date": "2025-02-27",
+              "total": 1619,
+              "under_6": 1046,
+              "six_to_12": 299,
+              "twelve_plus": 274
+            },
+            {
+              "date": "2025-03-27",
+              "total": 1659,
+              "under_6": 1114,
+              "six_to_12": 270,
+              "twelve_plus": 275
+            },
+            {
+              "date": "2025-04-24",
+              "total": 1700,
+              "under_6": 1170,
+              "six_to_12": 261,
+              "twelve_plus": 269
+            },
+            {
+              "date": "2025-05-29",
+              "total": 1732,
+              "under_6": 1235,
+              "six_to_12": 238,
+              "twelve_plus": 259
+            },
+            {
+              "date": "2025-06-26",
+              "total": 1702,
+              "under_6": 1218,
+              "six_to_12": 240,
+              "twelve_plus": 244
+            },
+            {
+              "date": "2025-07-31",
+              "total": 1674,
+              "under_6": 1194,
+              "six_to_12": 228,
+              "twelve_plus": 252
+            },
+            {
+              "date": "2025-08-28",
+              "total": 1678,
+              "under_6": 1188,
+              "six_to_12": 262,
+              "twelve_plus": 228
+            },
+            {
+              "date": "2025-09-25",
+              "total": 1599,
+              "under_6": 1094,
+              "six_to_12": 313,
+              "twelve_plus": 192
+            },
+            {
+              "date": "2025-10-30",
+              "total": 1475,
+              "under_6": 1012,
+              "six_to_12": 327,
+              "twelve_plus": 136
+            },
+            {
+              "date": "2025-11-27",
+              "total": 1448,
+              "under_6": 1001,
+              "six_to_12": 312,
+              "twelve_plus": 135
+            },
+            {
+              "date": "2025-12-18",
+              "total": 1353,
+              "under_6": 979,
+              "six_to_12": 300,
+              "twelve_plus": 74
+            },
+            {
+              "date": "2026-01-29",
+              "total": 1360,
+              "under_6": 1000,
+              "six_to_12": 299,
+              "twelve_plus": 61
+            },
+            {
+              "date": "2026-02-26",
+              "total": 1330,
+              "under_6": 1060,
+              "six_to_12": 255,
+              "twelve_plus": 15
+            },
+            {
+              "date": "2026-03-26",
+              "total": 1320,
+              "under_6": 1183,
+              "six_to_12": 130,
+              "twelve_plus": 7
+            },
+            {
+              "date": "2026-04-30",
+              "total": 1350,
+              "under_6": 1282,
+              "six_to_12": 59,
+              "twelve_plus": 9
+            },
+            {
+              "date": "2026-05-28",
+              "total": 1359,
+              "under_6": 1311,
+              "six_to_12": 38,
+              "twelve_plus": 10
+            },
+            {
+              "date": "2026-06-25",
+              "total": 1266,
+              "under_6": 1232,
+              "six_to_12": 20,
+              "twelve_plus": 14
+            }
+          ]
         }
-      ]
+      }
     }
   }
 }

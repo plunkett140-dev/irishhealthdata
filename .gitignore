@@ -8,19 +8,24 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
+# Anchored to repo root (not bare "build/" etc.): this is now a mixed
+# Python + Node.js repo, and unanchored versions of these classic Python
+# packaging-artifact names silently matched nested frontend source
+# directories too (e.g. site/src/lib/ was being excluded — never committed
+# until this was caught and fixed, 2026-08-13).
+/build/
+/develop-eggs/
+/dist/
+/downloads/
+/eggs/
+/.eggs/
+/lib/
+/lib64/
+/parts/
+/sdist/
+/var/
+/wheels/
+/share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
