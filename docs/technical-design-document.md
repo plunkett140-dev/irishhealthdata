@@ -1,6 +1,6 @@
 # IrishHealthData.com — Technical Design Document
-**Version:** 0.5 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
-**Last updated:** 2026-08-11
+**Version:** 0.6 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
+**Last updated:** 2026-08-13
 
 > This document is the single source of truth for what we're building, why, and how. Every major decision should be traceable here. If future-you can't reconstruct the reasoning in five minutes, this document has failed its purpose.
 
@@ -241,6 +241,30 @@ Decision: **Vercel.** Built by the team behind Next.js (already Decision 003), s
 Consequences: the live site becomes available to anyone with the URL, not dependent on any one laptop. Local development still happens on Plunkett's machine, but nothing about the public site's availability depends on that machine being on or even existing.
 
 *Future Me Test:* Revisit if the project ever needs server-side compute beyond what Vercel's free tier supports (e.g. heavy live database queries rather than precomputed static JSON), or if costs change materially at scale.
+
+---
+
+**Decision 009 — Add NTPF Outpatient (OP) waiting list data, alongside IPDC**
+
+Context: raised 2026-08-13. The platform only had Inpatient/Day Case (IPDC) waiting list data — a real but partial picture, since NTPF publishes a parallel Outpatient (OP) waiting list dataset (referrals waiting for a first hospital consultation, as distinct from IPDC's waiting-for-admission/procedure population). OP was investigated and added end-to-end in one session: loaders, warehouse, dashboard, documentation, deploy.
+
+Investigation findings (Step 0, before any code was written — see etl/ntpf_op_historical.py and etl/ntpf_op_speciality.py docstrings for the full detail):
+
+- OP data does **not** go back to 2014 like IPDC. NTPF's Open Data page's year selector lists 2014-2026, but there are no actual OP download links for 2014-2017 — confirmed directly against the page, not assumed. OP-by-Hospital starts at 2018; OP-by-Speciality starts at 2021 (Apr-Dec), matching IPDC-by-Speciality's own start point.
+- OP's format eras mirror IPDC's exactly, at the same 2021 split point (wide hospital-only format 2021 Apr-Dec onward; long hospital+specialty format before that). The one real structural difference: OP has no `Case_Type` (Inpatient/Day Case) column at any era, since outpatient appointments are a single appointment type with no inpatient/day-case distinction to make.
+- Also investigated per the same brief: NTPF's separate "IPDC Waiting List Adult & Child Analysis" file. It does **not** have finer time bands than the standard files (still Under 6/6-12/12-18/18+ months) — its actual value is being the only 2022+ file exposing `Case_Type` at hospital level, which the standard IPDC-by-Hospital file collapses for recent years. Deliberately **not** added today (separate task, per direction) — noted here so the finding isn't lost.
+
+Alternatives considered for the schema:
+- (a) A parallel `fact_waiting_list_op` table, structurally identical to `fact_waiting_list` — keeps the two datasets fully separate, but duplicates every dimension join and every downstream query, and risks the two tables' schemas silently drifting apart over time.
+- (b) One shared `fact_waiting_list` table with a `list_type` column ('ipdc' or 'op') distinguishing the two — a genuine extension of the existing granularity/is_suppressed_bucket pattern already established for IPDC's own multiple formats.
+
+Decision: **(b)**. Extends `build_warehouse_schema.py` to tag every row with `list_type`, reusing the existing era-A/B/C normalisation functions for OP (same eras, same functions — `normalise_era_b()` already tolerates IPDC's missing-in-OP `Case_Type` column via `pandas.rename()`'s silent-skip-on-absent-key behaviour, no special-casing needed) and the existing hospital/specialty alias canonicalisation. Verified after building: `dim_hospital` stayed at exactly 47 rows — OP uses the same real hospitals, no new unaliased name variants — and `dim_specialty` gained genuinely new outpatient-only specialties (Psychiatry, Radiotherapy, Intensive Care, etc.) with no near-duplicate spellings.
+
+**Known limitation, OP-specific (not silently papered over):** the OP-by-Speciality national file has **two unlabeled rows per (archive_date, adult_child, speciality)**, with no column in the source file distinguishing them. Confirmed by direct investigation to be real, distinct sub-populations rather than a duplicate-row data error: summing both rows together reconciles *exactly* against the OP-by-Hospital national total for the same date/population (560,219 = 560,219, Adult, 2026-01-29 archive date). The most likely explanation is an unlabeled New vs. Review appointment split — a standard outpatient-clinic distinction — but that is an inference from the pattern, not something NTPF's export confirms, so it's recorded here as an open question rather than asserted as fact. `build_warehouse_schema.py` sums both rows explicitly (`normalise_national_speciality(..., dedupe_sum=True)` for OP; IPDC's equivalent file has no such duplication, verified, so its call site is unaffected) rather than silently picking one row or leaving the ambiguity in the fact table for every downstream query to rediscover.
+
+Consequences: the dashboard (site/) gained a second toggle (IPDC / Outpatient) alongside the existing Adult/Child toggle, applied to the national totals, national specialty breakdown, and per-hospital drill-down alike, reusing the same chart components and the same `wait_time_buckets.py` bucketing logic — no new chart types, no new bucket scheme, just a new filter dimension threaded through the existing pipeline. National OP total (600,727, Adult, 2026-06-25) is roughly 5.5x national IPDC (108,187) at the same date — consistent with outpatient waiting lists being much larger than inpatient/day-case ones, and a useful order-of-magnitude sanity check for anyone extending this further.
+
+*Future Me Test:* If NTPF ever adds a column distinguishing the two OP-by-Speciality sub-populations (or if the New/Review inference turns out to be wrong), revisit `normalise_national_speciality()`'s dedupe_sum step — it currently sums blind to what the two rows actually represent, which is the right conservative choice only as long as that distinction stays genuinely unavailable in the source data.
 
 ### 8. Deferred sections *(intentionally not written yet)*
 
