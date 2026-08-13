@@ -25,7 +25,6 @@ USAGE:
     python charts/hospital_band_breakdown.py "Beaumont Hospital"
 """
 
-import re
 import sys
 from pathlib import Path
 
@@ -34,36 +33,19 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
 from style import apply_style, finish_chart, PALETTE
+from wait_time_buckets import BUCKET_ORDER, classify_band, slugify_hospital_name
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / "data" / "processed" / "irishhealthdata.duckdb"
 OUTPUT_DIR = REPO_ROOT / "site" / "charts"
 
-BUCKET_ORDER = ["Under 6 Months", "6-12 Months", "12+ Months"]
 BUCKET_COLORS = {
     "Under 6 Months": PALETTE[0],
     "6-12 Months": PALETTE[4],
     "12+ Months": PALETTE[1],
 }
-
-
-def classify_band(time_band: str) -> str:
-    """Extract the starting month number from a band label and bucket it.
-    Returns 'Unknown' (never silently dropped) if no number is found, so
-    unexpected label formats surface rather than vanish."""
-    if not isinstance(time_band, str):
-        return "Unknown"
-    match = re.match(r"\s*(\d+)", time_band)
-    if not match:
-        return "Unknown"
-    start_month = int(match.group(1))
-    if start_month < 6:
-        return "Under 6 Months"
-    elif start_month < 12:
-        return "6-12 Months"
-    else:
-        return "12+ Months"
 
 
 def get_band_breakdown(con: duckdb.DuckDBPyConnection, hospital_name: str) -> pd.DataFrame:
@@ -114,7 +96,7 @@ def plot_band_breakdown(df: pd.DataFrame, hospital_name: str) -> None:
     ax.legend(loc="upper left", frameon=False)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    slug = hospital_name.lower().replace(" ", "-").replace("'", "")
+    slug = slugify_hospital_name(hospital_name)
     output_path = OUTPUT_DIR / f"{slug}-band-breakdown.png"
 
     finish_chart(

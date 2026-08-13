@@ -24,7 +24,9 @@ import duckdb
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
 from style import apply_style, finish_chart, COLOR_PRIMARY
+from wait_time_buckets import slugify_hospital_name
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / "data" / "processed" / "irishhealthdata.duckdb"
@@ -65,7 +67,7 @@ def plot_trend(df, hospital_name: str) -> None:
     ax.set_xlabel("")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    slug = hospital_name.lower().replace(" ", "-").replace("'", "")
+    slug = slugify_hospital_name(hospital_name)
     output_path = OUTPUT_DIR / f"{slug}-trend.png"
 
     finish_chart(

@@ -1,0 +1,243 @@
+{
+  "hospital_name": "Rotunda Hospital",
+  "slug": "rotunda-hospital",
+  "source": "National Treatment Purchase Fund (NTPF), Open Data \u2014 Waiting List Data",
+  "methodology_note": "Pre-2021 figures summed across Inpatient + Day Case and all specialties for comparability with the combined post-2021 reporting format. Time bands grouped into Under 6 / 6-12 / 12+ months by starting wait length, since NTPF's own band boundaries changed at the same point (2022+ files use 0-6/6-12/12-18/18+ months; pre-2021 files use 0-3/3-6/6-9/9-12/12+ months) and are not directly comparable band-for-band.",
+  "known_limitations": "Adult and Child are NTPF's own classification (no further age breakdown is published). A hospital with no patients in a population shows an empty chart for that toggle rather than being hidden.",
+  "populations": {
+    "Adult": {
+      "last_updated": "2026-06-25",
+      "series": [
+        {
+          "date": "2024-12-19",
+          "total": 241,
+          "under_6": 174,
+          "six_to_12": 38,
+          "twelve_plus": 29
+        },
+        {
+          "date": "2025-01-30",
+          "total": 274,
+          "under_6": 201,
+          "six_to_12": 41,
+          "twelve_plus": 32
+        },
+        {
+          "date": "2025-02-27",
+          "total": 320,
+          "under_6": 244,
+          "six_to_12": 41,
+          "twelve_plus": 35
+        },
+        {
+          "date": "2025-03-27",
+          "total": 261,
+          "under_6": 172,
+          "six_to_12": 50,
+          "twelve_plus": 39
+        },
+        {
+          "date": "2025-04-24",
+          "total": 256,
+          "under_6": 176,
+          "six_to_12": 52,
+          "twelve_plus": 28
+        },
+        {
+          "date": "2025-05-29",
+          "total": 502,
+          "under_6": 387,
+          "six_to_12": 72,
+          "twelve_plus": 43
+        },
+        {
+          "date": "2025-06-26",
+          "total": 506,
+          "under_6": 399,
+          "six_to_12": 67,
+          "twelve_plus": 40
+        },
+        {
+          "date": "2025-07-31",
+          "total": 510,
+          "under_6": 412,
+          "six_to_12": 66,
+          "twelve_plus": 32
+        },
+        {
+          "date": "2025-08-28",
+          "total": 519,
+          "under_6": 430,
+          "six_to_12": 73,
+          "twelve_plus": 16
+        },
+        {
+          "date": "2025-09-25",
+          "total": 513,
+          "under_6": 426,
+          "six_to_12": 69,
+          "twelve_plus": 18
+        },
+        {
+          "date": "2025-10-30",
+          "total": 485,
+          "under_6": 395,
+          "six_to_12": 69,
+          "twelve_plus": 21
+        },
+        {
+          "date": "2025-11-27",
+          "total": 566,
+          "under_6": 452,
+          "six_to_12": 96,
+          "twelve_plus": 18
+        },
+        {
+          "date": "2025-12-18",
+          "total": 596,
+          "under_6": 476,
+          "six_to_12": 103,
+          "twelve_plus": 17
+        },
+        {
+          "date": "2026-01-29",
+          "total": 507,
+          "under_6": 403,
+          "six_to_12": 88,
+          "twelve_plus": 16
+        },
+        {
+          "date": "2026-02-26",
+          "total": 547,
+          "under_6": 441,
+          "six_to_12": 93,
+          "twelve_plus": 13
+        },
+        {
+          "date": "2026-03-26",
+          "total": 557,
+          "under_6": 431,
+          "six_to_12": 106,
+          "twelve_plus": 20
+        },
+        {
+          "date": "2026-04-30",
+          "total": 476,
+          "under_6": 451,
+          "six_to_12": 22,
+          "twelve_plus": 3
+        },
+        {
+          "date": "2026-05-28",
+          "total": 450,
+          "under_6": 436,
+          "six_to_12": 12,
+          "twelve_plus": 2
+        },
+        {
+          "date": "2026-06-25",
+          "total": 495,
+          "under_6": 439,
+          "six_to_12": 53,
+          "twelve_plus": 3
+        }
+      ]
+    },
+    "Child": {
+      "last_updated": "2026-06-25",
+      "series": [
+        {
+          "date": "2025-04-24",
+          "total": 1,
+          "under_6": 1,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-05-29",
+          "total": 4,
+          "under_6": 4,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-06-26",
+          "total": 3,
+          "under_6": 3,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-07-31",
+          "total": 2,
+          "under_6": 2,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-10-30",
+          "total": 1,
+          "under_6": 1,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-11-27",
+          "total": 2,
+          "under_6": 2,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2025-12-18",
+          "total": 4,
+          "under_6": 4,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-01-29",
+          "total": 2,
+          "under_6": 2,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-02-26",
+          "total": 2,
+          "under_6": 2,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-03-26",
+          "total": 4,
+          "under_6": 4,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-04-30",
+          "total": 5,
+          "under_6": 5,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-05-28",
+          "total": 3,
+          "under_6": 3,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        },
+        {
+          "date": "2026-06-25",
+          "total": 3,
+          "under_6": 3,
+          "six_to_12": 0,
+          "twelve_plus": 0
+        }
+      ]
+    }
+  }
+}

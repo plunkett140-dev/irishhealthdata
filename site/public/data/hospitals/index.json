@@ -1,0 +1,190 @@
+[
+  {
+    "slug": "bantry-general-hospital",
+    "hospital_name": "Bantry General Hospital"
+  },
+  {
+    "slug": "beaumont-hospital",
+    "hospital_name": "Beaumont Hospital"
+  },
+  {
+    "slug": "cappagh-national-orthopaedic-hospital",
+    "hospital_name": "Cappagh National Orthopaedic Hospital"
+  },
+  {
+    "slug": "cavan-general-hospital",
+    "hospital_name": "Cavan General Hospital"
+  },
+  {
+    "slug": "childrens-health-ireland",
+    "hospital_name": "Children's Health Ireland"
+  },
+  {
+    "slug": "connolly-hospital-blanchardstown",
+    "hospital_name": "Connolly Hospital Blanchardstown"
+  },
+  {
+    "slug": "coombe-women-and-infants-university-hospital",
+    "hospital_name": "Coombe Women and Infants University Hospital"
+  },
+  {
+    "slug": "cork-university-hospital",
+    "hospital_name": "Cork University Hospital"
+  },
+  {
+    "slug": "cork-university-maternity-hospital",
+    "hospital_name": "Cork University Maternity Hospital"
+  },
+  {
+    "slug": "croom-orthopaedic-hospital",
+    "hospital_name": "Croom Orthopaedic Hospital"
+  },
+  {
+    "slug": "ennis-hospital",
+    "hospital_name": "Ennis Hospital"
+  },
+  {
+    "slug": "galway-university-hospitals",
+    "hospital_name": "Galway University Hospitals"
+  },
+  {
+    "slug": "kilcreene-regional-orthopaedic-hospital",
+    "hospital_name": "Kilcreene Regional Orthopaedic Hospital"
+  },
+  {
+    "slug": "letterkenny-university-hospital",
+    "hospital_name": "Letterkenny University Hospital"
+  },
+  {
+    "slug": "louth-county-hospital",
+    "hospital_name": "Louth County Hospital"
+  },
+  {
+    "slug": "mallow-general-hospital",
+    "hospital_name": "Mallow General Hospital"
+  },
+  {
+    "slug": "mater-misericordiae-university-hospital",
+    "hospital_name": "Mater Misericordiae University Hospital"
+  },
+  {
+    "slug": "mayo-university-hospital",
+    "hospital_name": "Mayo University Hospital"
+  },
+  {
+    "slug": "mercy-university-hospital",
+    "hospital_name": "Mercy University Hospital"
+  },
+  {
+    "slug": "midland-regional-hospital-mullingar",
+    "hospital_name": "Midland Regional Hospital Mullingar"
+  },
+  {
+    "slug": "midland-regional-hospital-portlaoise",
+    "hospital_name": "Midland Regional Hospital Portlaoise"
+  },
+  {
+    "slug": "midland-regional-hospital-tullamore",
+    "hospital_name": "Midland Regional Hospital Tullamore"
+  },
+  {
+    "slug": "naas-general-hospital",
+    "hospital_name": "Naas General Hospital"
+  },
+  {
+    "slug": "national-maternity-hospital-(holles-street)",
+    "hospital_name": "National Maternity Hospital (Holles Street)"
+  },
+  {
+    "slug": "nenagh-hospital",
+    "hospital_name": "Nenagh Hospital"
+  },
+  {
+    "slug": "north-dublin-surgical-hub",
+    "hospital_name": "North Dublin Surgical Hub"
+  },
+  {
+    "slug": "our-lady-of-lourdes-hospital-drogheda",
+    "hospital_name": "Our Lady of Lourdes Hospital Drogheda"
+  },
+  {
+    "slug": "our-ladys-hospital-navan",
+    "hospital_name": "Our Lady's Hospital Navan"
+  },
+  {
+    "slug": "portiuncula-university-hospital",
+    "hospital_name": "Portiuncula University Hospital"
+  },
+  {
+    "slug": "roscommon-university-hospital",
+    "hospital_name": "Roscommon University Hospital"
+  },
+  {
+    "slug": "rotunda-hospital",
+    "hospital_name": "Rotunda Hospital"
+  },
+  {
+    "slug": "royal-victoria-eye-and-ear-hospital",
+    "hospital_name": "Royal Victoria Eye and Ear Hospital"
+  },
+  {
+    "slug": "sligo-university-hospital",
+    "hospital_name": "Sligo University Hospital"
+  },
+  {
+    "slug": "south-infirmary-victoria-university-hospital",
+    "hospital_name": "South Infirmary Victoria University Hospital"
+  },
+  {
+    "slug": "south-tipperary-general-hospital",
+    "hospital_name": "South Tipperary General Hospital"
+  },
+  {
+    "slug": "st.-columcilles-hospital",
+    "hospital_name": "St. Columcille's Hospital"
+  },
+  {
+    "slug": "st.-jamess-hospital",
+    "hospital_name": "St. James's Hospital"
+  },
+  {
+    "slug": "st.-johns-hospital-limerick",
+    "hospital_name": "St. John's Hospital Limerick"
+  },
+  {
+    "slug": "st.-lukes-general-hospital-kilkenny",
+    "hospital_name": "St. Luke's General Hospital Kilkenny"
+  },
+  {
+    "slug": "st.-michaels-hospital-dun-laoghaire",
+    "hospital_name": "St. Michael's Hospital Dun Laoghaire"
+  },
+  {
+    "slug": "st.-vincents-university-hospital",
+    "hospital_name": "St. Vincent's University Hospital"
+  },
+  {
+    "slug": "tallaght-university-hospital",
+    "hospital_name": "Tallaght University Hospital"
+  },
+  {
+    "slug": "tipperary-university-hospital",
+    "hospital_name": "Tipperary University Hospital"
+  },
+  {
+    "slug": "university-hospital-kerry",
+    "hospital_name": "University Hospital Kerry"
+  },
+  {
+    "slug": "university-hospital-limerick",
+    "hospital_name": "University Hospital Limerick"
+  },
+  {
+    "slug": "university-hospital-waterford",
+    "hospital_name": "University Hospital Waterford"
+  },
+  {
+    "slug": "wexford-general-hospital",
+    "hospital_name": "Wexford General Hospital"
+  }
+]
