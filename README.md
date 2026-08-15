@@ -6,7 +6,7 @@ healthcare system, see the TDD's Non-goals section).
 
 Open, reproducible, evidence-based digital observatory of the Irish healthcare system.
 
-Owner: Plunkett McCullagh
+Maintained by Ireland in Data. (Internal ownership/accountability records live in `docs/technical-design-document.md`, not in public-facing files — see the Branding & Attribution convention there.)
 
 ## Principles
 

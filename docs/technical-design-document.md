@@ -1,6 +1,6 @@
 # Ireland in Data (irelandindata.ie) — Technical Design Document
-**Version:** 0.8 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
-**Last updated:** 2026-08-13
+**Version:** 0.9 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
+**Last updated:** 2026-08-15
 **Formerly:** IrishHealthData.com — renamed per Decision 010
 
 > This document is the single source of truth for what we're building, why, and how. Every major decision should be traceable here. If future-you can't reconstruct the reasoning in five minutes, this document has failed its purpose.
@@ -47,6 +47,7 @@ These principles govern every technical decision below them. When in doubt, defe
 | **Transparency** | Every page shows: Source, Last updated, Methodology, Known limitations. No black boxes. |
 | **Simplicity** | Between two options with equal outcomes, pick the simpler one. Complexity is debt, not sophistication. |
 | **Legal-first** *(new)* | No dataset goes live until its licence, attribution requirement, and redistribution terms are checked and logged. |
+| **Brand attribution** *(new, Decision 012)* | All public-facing content attributes to "Ireland in Data" only, never a personal name. Internal governance records (this document's own Owner field, dataset metadata `owner` fields) are exempt — this is about what a visitor sees, not accountability records. |
 
 ---
 
@@ -308,6 +309,16 @@ Known limitation, not fully resolved: a green/amber/red traffic-light scheme is 
 Verified before committing: regenerated `hospital_trend.py` (Beaumont Hospital), `hospital_band_breakdown.py` (Beaumont Hospital), and `national_specialty_trend.py` (Orthopaedics) and visually inspected all three PNGs — good contrast against white, no clashing between the three bucket colors, green primary reads cleanly on the single-line trend chart. Confirmed via the compiled Next.js bundle that the new green shipped to the dashboard's client-side chart code and the old blue is completely gone from it.
 
 *Future Me Test:* If a colorblind-accessibility complaint ever comes in about the traffic-light bucket colors, revisit with a colorblind-safe alternative encoding (e.g. line style/dash pattern in addition to color) rather than dropping the traffic-light semantics entirely — the meaning is worth keeping, the pure-color-only encoding is the part that would need to change.
+
+---
+
+**Decision 012 — Brand attribution: public-facing content names "Ireland in Data," never a personal person**
+
+Context: raised 2026-08-15. All public-facing content — site UI, article bylines, About pages, meta tags, page titles, README, any text a visitor or reader would see — must attribute to "Ireland in Data" only. This does NOT apply to internal governance content (this document's own Owner field, dataset metadata `owner` fields per the Metadata Standard, Section 6) — the distinction is what's publicly visible versus internal accountability records, not attribution generally. "Every object has an owner" (Architecture Principles, 2a) remains true and necessary for handover purposes; it just isn't something a site visitor needs to see.
+
+Audit findings (2026-08-15): the Next.js site itself (`site/`) was already clean — no personal name anywhere in components, pages, metadata, or `package.json` (which has no `author` field at all), confirmed by grepping the source and checking the actual rendered page head. One real fix was needed: the repo-root `README.md` had an `Owner: <name>` line, which is genuinely the first thing a visitor to the GitHub repo sees — changed to "Maintained by Ireland in Data." Two categories were checked and deliberately left alone as internal governance records, per the exemption above: this document's own masthead Owner field and its narrative mentions elsewhere in the Decision Log, and the `owner` field in dataset metadata JSON files (`docs/*.metadata.json`) — neither is rendered to a site visitor today, and both exist specifically for accountability/handover traceability, not publication.
+
+*Future Me Test:* If a dataset page template or About page is ever built (Decision 006's deferred indicator/dataset pages), re-audit at that point specifically for whether dataset metadata's `owner` field gets surfaced to visitors — if it does, that specific rendering needs to omit or relabel the field, without changing the underlying metadata record itself (which should keep the real name for accountability purposes regardless of what the site displays).
 
 ### 8. Deferred sections *(intentionally not written yet)*
 
