@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PageFooter } from "@/components/PageFooter";
 import { SpecialtyBreakdownChart } from "@/components/SpecialtyBreakdownChart";
 import { WaitingListCharts } from "@/components/WaitingListCharts";
 import type {
@@ -184,6 +185,15 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+
+      {national && specialtyBreakdown && (
+        <PageFooter
+          national={national}
+          specialtyBreakdown={specialtyBreakdown}
+          listType={listType}
+          population={population}
+        />
+      )}
     </div>
   );
 }

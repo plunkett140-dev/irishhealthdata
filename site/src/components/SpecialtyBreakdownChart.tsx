@@ -24,9 +24,7 @@ export function SpecialtyBreakdownChart({
   listType,
   population,
 }: SpecialtyBreakdownChartProps) {
-  const listTypeData = data.list_types[listType];
-  const { last_updated, known_limitations, items: rawItems } =
-    listTypeData.populations[population];
+  const { items: rawItems } = data.list_types[listType].populations[population];
   const listTypeLabel = LIST_TYPE_LABELS[listType];
 
   if (rawItems.length === 0) {
@@ -84,12 +82,7 @@ export function SpecialtyBreakdownChart({
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <ChartFooter
-        source={data.source}
-        lastUpdated={last_updated ?? "n/a"}
-        methodologyNote={listTypeData.methodology_note}
-        knownLimitations={known_limitations}
-      />
+      <ChartFooter source={data.source} />
     </section>
   );
 }

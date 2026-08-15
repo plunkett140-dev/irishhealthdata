@@ -33,8 +33,7 @@ export function WaitingListCharts({
   population,
   titlePrefix,
 }: WaitingListChartsProps) {
-  const listTypeData = data.list_types[listType];
-  const { last_updated, series: rawSeries } = listTypeData.populations[population];
+  const { series: rawSeries } = data.list_types[listType].populations[population];
   const listTypeLabel = LIST_TYPE_LABELS[listType];
 
   if (rawSeries.length === 0) {
@@ -79,12 +78,7 @@ export function WaitingListCharts({
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <ChartFooter
-          source={data.source}
-          lastUpdated={last_updated ?? "n/a"}
-          methodologyNote={listTypeData.methodology_note}
-          knownLimitations={listTypeData.known_limitations}
-        />
+        <ChartFooter source={data.source} />
       </section>
 
       <section>
@@ -131,12 +125,7 @@ export function WaitingListCharts({
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <ChartFooter
-          source={data.source}
-          lastUpdated={last_updated ?? "n/a"}
-          methodologyNote={listTypeData.methodology_note}
-          knownLimitations={listTypeData.known_limitations}
-        />
+        <ChartFooter source={data.source} />
       </section>
     </div>
   );
