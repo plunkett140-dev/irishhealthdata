@@ -1,0 +1,12 @@
+<svg width="680" height="300" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Ireland in Data</title>
+<desc>A rounded square mark in Irish flag green, containing four ascending white bars topped with an Irish-flag-orange dot, with the wordmark "Ireland in data" in black below.</desc>
+<rect x="265" y="40" width="150" height="150" rx="28" fill="#169B62"/>
+<rect x="295" y="149" width="16" height="26" rx="3" fill="#FFFFFF"/>
+<rect x="321" y="129" width="16" height="46" rx="3" fill="#FFFFFF"/>
+<rect x="347" y="109" width="16" height="66" rx="3" fill="#FFFFFF"/>
+<rect x="373" y="89" width="16" height="86" rx="3" fill="#FFFFFF"/>
+<circle cx="381" cy="75" r="9" fill="#FF883E"/>
+<text x="340" y="235" text-anchor="middle" font-size="32" font-weight="500" font-family="sans-serif" fill="#1A1A1A">Ireland</text>
+<text x="340" y="265" text-anchor="middle" font-size="20" font-weight="400" font-family="sans-serif" fill="#4A4A4A">in data</text>
+</svg>
