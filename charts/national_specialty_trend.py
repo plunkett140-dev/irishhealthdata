@@ -29,14 +29,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from style import apply_style, finish_chart, PALETTE
+from style import apply_style, finish_chart, BUCKET_COLORS
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / "data" / "processed" / "irishhealthdata.duckdb"
 OUTPUT_DIR = REPO_ROOT / "site" / "charts"
 
 BUCKET_ORDER = ["Under 6 Months", "6-12 Months", "12+ Months"]
-BUCKET_COLORS = {"Under 6 Months": PALETTE[0], "6-12 Months": PALETTE[4], "12+ Months": PALETTE[1]}
 
 
 def classify_band(time_band: str) -> str:

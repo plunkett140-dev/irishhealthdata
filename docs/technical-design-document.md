@@ -1,6 +1,7 @@
-# IrishHealthData.com — Technical Design Document
-**Version:** 0.6 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
+# Ireland in Data (irelandindata.ie) — Technical Design Document
+**Version:** 0.8 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
 **Last updated:** 2026-08-13
+**Formerly:** IrishHealthData.com — renamed per Decision 010
 
 > This document is the single source of truth for what we're building, why, and how. Every major decision should be traceable here. If future-you can't reconstruct the reasoning in five minutes, this document has failed its purpose.
 
@@ -62,7 +63,7 @@ These are Design Philosophy made enforceable — rules a future contributor (inc
 
 ### 2b. Non-goals
 
-Being explicit about what this project will *not* do protects focus and credibility. IrishHealthData.com is **not**:
+Being explicit about what this project will *not* do protects focus and credibility. Ireland in Data is **not**:
 
 - another news website
 - another health blog or opinion outlet
@@ -228,6 +229,18 @@ Evidence from the Week 5 ETL prototype (NTPF IPDC Waiting List by Hospital, run 
 
 ---
 
+**Decision 007 — Time-band boundaries not reconciled across formats**
+
+Context: NTPF's waiting-time bands changed at the same April 2021 boundary as other format changes: 2022+ files use 0-6/6-12/12-18/18+ months, while pre-2021 files use 0-3/3-6/6-9/9-12/12+ months. No single set of bands covers the full 2014-2026 range at native granularity.
+
+Decision: Rather than force-fitting one scheme onto the other (which would either fabricate precision the older data doesn't have, or throw away real precision the older data does have), charts spanning the full range use three coarser, genuinely comparable buckets — Under 6 / 6-12 / 12+ months — built from each band's starting month (see charts/hospital_band_breakdown.py and etl/wait_time_buckets.py). Finer-grained bands remain available for pre-2021-only analysis.
+
+Known limitation, not fully resolved: this means the Sláintecare-relevant 12-week (~3 month) target line can't be precisely reconstructed for 2022+ data — the finest available band starts at 0-6 months, straddling the target. Confirmed NTPF's own "IPDC Waiting List Adult & Child Analysis" file doesn't add finer bands either (2026-08-13 investigation) — it restores a Case_Type split, not band granularity.
+
+*Future Me Test:* Revisit if NTPF ever republishes finer bands for recent years, or if a future dataset (e.g. the interactive Sláintecare target dashboard) turns out to be independently downloadable.
+
+---
+
 **Decision 008 — Hosting platform: Vercel**
 
 Context: raised 2026-08-12, working through backup/single-point-of-failure risk. Source code and raw data are already safe (pushed to GitHub, and raw data is independently re-downloadable from NTPF as a third fallback). The local DuckDB database is deliberately unbacked-up — it's fully regenerable from the archived raw files in minutes, per the Data is immutable / Everything is code principles, so it isn't treated as data at risk. The real open question was the *live public website*: GitHub hosts source, not a running site, and a laptop-only deployment would be both a single point of failure and inaccessible to other people.
@@ -265,6 +278,36 @@ Decision: **(b)**. Extends `build_warehouse_schema.py` to tag every row with `li
 Consequences: the dashboard (site/) gained a second toggle (IPDC / Outpatient) alongside the existing Adult/Child toggle, applied to the national totals, national specialty breakdown, and per-hospital drill-down alike, reusing the same chart components and the same `wait_time_buckets.py` bucketing logic — no new chart types, no new bucket scheme, just a new filter dimension threaded through the existing pipeline. National OP total (600,727, Adult, 2026-06-25) is roughly 5.5x national IPDC (108,187) at the same date — consistent with outpatient waiting lists being much larger than inpatient/day-case ones, and a useful order-of-magnitude sanity check for anyone extending this further.
 
 *Future Me Test:* If NTPF ever adds a column distinguishing the two OP-by-Speciality sub-populations (or if the New/Review inference turns out to be wrong), revisit `normalise_national_speciality()`'s dedupe_sum step — it currently sums blind to what the two rows actually represent, which is the right conservative choice only as long as that distinction stays genuinely unavailable in the source data.
+
+---
+
+**Decision 010 — Rebrand to Ireland in Data / irelandindata.ie**
+
+Context: raised 2026-08-13. "IrishHealthData.com" was chosen on Day 1, alongside a flagged naming collision with the government's own HealthData@IE initiative. A broader, more brandable name was considered as an alternative.
+
+Decision: Rebrand to "Ireland in Data" (irelandindata.ie). Deliberately broader than the project's current scope — chosen to leave room for the platform to eventually cover non-health Irish public data, without requiring a future rebrand, while the government-initiative naming collision is also avoided as a side benefit.
+
+Explicitly NOT a scope change today: Volume I's Mission Statement and Non-goals (Section 2b) remain healthcare-focused and unchanged. This decision is about the name only. If and when the project actually expands beyond health, that expansion needs its own decision entry updating the Vision — a broader name existing is not itself authorization to broaden scope.
+
+Consequences: requires updating the domain (Vercel), repo README/site branding, and the TDD title. GitHub repo name (irishhealthdata) can stay as-is — GitHub auto-redirects renamed repos, and renaming is optional, low-value churn today.
+
+*Future Me Test:* If the project is still healthcare-only in two years, ask whether the broader name ever actually got used for its intended purpose, or whether it just added a layer of naming indirection for no real benefit.
+
+---
+
+**Decision 011 — Rebrand the color palette to Irish flag colors; traffic-light wait-band colors**
+
+Context: raised 2026-08-13, alongside Decision 010's naming rebrand. The original chart/site palette (blue primary, arbitrary palette-index colors for the three wait-length buckets) had no connection to Ireland and no intuitive meaning — a reader had to check the legend every time to know whether a color meant a short or long wait.
+
+Decision: New brand palette — Irish flag green (`#169B62`) as primary, black text, white backgrounds, Irish flag orange (`#FF883E`) as a one-off brand accent reserved for the logo/wordmark only (deliberately excluded from `PALETTE` and `BUCKET_COLORS` so it can never end up representing a data series by accident). The three wait-length buckets move from an arbitrary palette-index assignment to a semantic traffic-light scheme: Under 6 Months = green, 6-12 Months = amber (`#EF9F27`), 12+ Months = red/coral (`#D9541F`, kept unchanged from the old palette — it already read well against the new primary, no reason to change a color that wasn't broken). Green/amber/red needs no legend-reading: it maps directly onto "on track / moderate wait / long wait worth flagging," the same interpretation a reader already brings from traffic lights, so it actively communicates rather than just decorates.
+
+Implementation note: `BUCKET_COLORS` was previously defined locally (and identically) inside both `charts/hospital_band_breakdown.py` and `charts/national_specialty_trend.py`, built from `PALETTE` indices. Centralised into `charts/style.py` as a named constant during this change — the two chart scripts now import it directly rather than each keeping their own copy, closing off the same kind of silent-drift risk that `wait_time_buckets.py` closed off for bucket *classification* earlier. `site/src/lib/theme.ts` mirrors `charts/style.py` exactly, as before. `PALETTE[2]` (the third general-purpose palette color, for any future multi-series chart) was changed from the old `#2E8B57` to `#2C6E8C`, since the old value was a sea-green sitting uncomfortably close to the new green primary — a direct, minor knock-on fix caused by the primary color change, not a separate design decision.
+
+Known limitation, not fully resolved: a green/amber/red traffic-light scheme is a well-known problem for readers with red-green color blindness (protanopia/deuteranopia), who may struggle to distinguish the "on track" and "long wait" lines by color alone. Accepted here because the traffic-light metaphor's legend-free readability for the majority of readers was judged to outweigh this, and because line labels/legends remain present on every chart regardless (color is reinforcing, not the only signal) — but worth revisiting if this becomes a real accessibility complaint rather than a theoretical one.
+
+Verified before committing: regenerated `hospital_trend.py` (Beaumont Hospital), `hospital_band_breakdown.py` (Beaumont Hospital), and `national_specialty_trend.py` (Orthopaedics) and visually inspected all three PNGs — good contrast against white, no clashing between the three bucket colors, green primary reads cleanly on the single-line trend chart. Confirmed via the compiled Next.js bundle that the new green shipped to the dashboard's client-side chart code and the old blue is completely gone from it.
+
+*Future Me Test:* If a colorblind-accessibility complaint ever comes in about the traffic-light bucket colors, revisit with a colorblind-safe alternative encoding (e.g. line style/dash pattern in addition to color) rather than dropping the traffic-light semantics entirely — the meaning is worth keeping, the pure-color-only encoding is the part that would need to change.
 
 ### 8. Deferred sections *(intentionally not written yet)*
 

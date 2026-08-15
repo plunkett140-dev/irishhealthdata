@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-1 items-center justify-center bg-zinc-50 px-6">
       <div className="max-w-xl text-center">
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
-          IrishHealthData.com
+          Ireland in Data
         </h1>
         <p className="mt-4 text-lg leading-8 text-zinc-600">
           An open, evidence-based, reproducible digital observatory of the

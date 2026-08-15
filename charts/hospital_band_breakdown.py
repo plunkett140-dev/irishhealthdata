@@ -34,18 +34,12 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
-from style import apply_style, finish_chart, PALETTE
+from style import apply_style, finish_chart, BUCKET_COLORS
 from wait_time_buckets import BUCKET_ORDER, classify_band, slugify_hospital_name
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / "data" / "processed" / "irishhealthdata.duckdb"
 OUTPUT_DIR = REPO_ROOT / "site" / "charts"
-
-BUCKET_COLORS = {
-    "Under 6 Months": PALETTE[0],
-    "6-12 Months": PALETTE[4],
-    "12+ Months": PALETTE[1],
-}
 
 
 def get_band_breakdown(con: duckdb.DuckDBPyConnection, hospital_name: str) -> pd.DataFrame:

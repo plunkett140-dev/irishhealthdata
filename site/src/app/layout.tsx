@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "IrishHealthData.com",
+  title: "Ireland in Data",
   description:
     "An open, evidence-based, reproducible digital observatory of the Irish healthcare system.",
 };

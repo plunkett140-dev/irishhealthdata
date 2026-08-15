@@ -1,4 +1,8 @@
-# IrishHealthData.com
+# Ireland in Data (irelandindata.ie)
+
+Formerly IrishHealthData.com — renamed per Decision 010 in the Technical
+Design Document (name change only; current scope remains the Irish
+healthcare system, see the TDD's Non-goals section).
 
 Open, reproducible, evidence-based digital observatory of the Irish healthcare system.
 
@@ -18,7 +22,7 @@ data/processed/  - DuckDB database and derived tables
 etl/             - Extract-Transform-Load scripts, one per dataset
 etl/schema/      - Metadata JSON Schema — no dataset ships without passing this
 docs/            - Technical Design Document, metadata records, LICENSING.md
-site/            - Next.js frontend (not yet scaffolded)
+site/            - Next.js frontend (dashboard live at irelandindata.ie)
 ```
 
 ## Running the first ETL pipeline
