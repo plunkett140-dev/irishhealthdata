@@ -1,5 +1,5 @@
 # Ireland in Data (irelandindata.ie) — Technical Design Document
-**Version:** 0.9 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
+**Version:** 0.10 (draft) | **Status:** Living document | **Owner:** Plunkett McCullagh
 **Last updated:** 2026-08-15
 **Formerly:** IrishHealthData.com — renamed per Decision 010
 
@@ -107,6 +107,8 @@ Every article must clearly distinguish three categories of statement, and never 
 - **Opinion** — a judgement or recommendation, always labelled as such
 
 This is a cheap rule that does a lot of work for credibility — readers (and journalists citing you) should never have to guess which category a sentence falls into.
+
+For *how* to write once that discipline is in place — structure, tone, which writers' techniques this project deliberately borrows and which it deliberately avoids — see `docs/editorial-voice-canon.md`.
 
 **Risk register**
 
