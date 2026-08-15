@@ -56,7 +56,12 @@ def classify_band(time_band: str) -> str:
 def get_national_specialty_trend(con: duckdb.DuckDBPyConnection, specialty_name: str) -> pd.DataFrame:
     """Sums across ALL hospitals for hospital_specialty rows (pre-2021) and
     uses national_specialty rows directly (2021+) — both filtered to one
-    specialty, both excluding the suppression bucket."""
+    specialty, both excluding the suppression bucket.
+
+    list_type = 'ipdc' required: fact_waiting_list also holds Outpatient
+    (OP) rows since Decision 009, distinguished only by this column.
+    Without it this silently sums IPDC + OP together — same bug class
+    confirmed and fixed in hospital_trend.py, 2026-08-15."""
     query = """
         SELECT d.archive_date, f.time_band, f.count, f.granularity
         FROM warehouse.fact_waiting_list f
@@ -65,6 +70,7 @@ def get_national_specialty_trend(con: duckdb.DuckDBPyConnection, specialty_name:
         WHERE s.specialty_name = ?
           AND f.is_suppressed_bucket = FALSE
           AND f.adult_child = 'Adult'
+          AND f.list_type = 'ipdc'
           AND f.granularity IN ('hospital_specialty', 'national_specialty')
     """
     df = con.execute(query, [specialty_name]).df()

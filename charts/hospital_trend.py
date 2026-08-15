@@ -36,7 +36,16 @@ OUTPUT_DIR = REPO_ROOT / "site" / "charts"
 def get_trend(con: duckdb.DuckDBPyConnection, hospital_name: str):
     """One row per archive_date: total people waiting at this hospital,
     summed across case type, specialty, and time band — the only version
-    of this number that's comparable across the full date range."""
+    of this number that's comparable across the full date range.
+
+    list_type = 'ipdc' is required, not optional: fact_waiting_list also
+    holds Outpatient (OP) rows since the OP dataset was added (Decision
+    009), in the same table distinguished only by this column. Without
+    this filter, this query silently sums IPDC + OP together — confirmed
+    as a real bug (2026-08-15): re-running without the filter reproduced
+    exactly 69,390 for Beaumont Hospital, which is 12,536 (IPDC) + 56,854
+    (OP), not a real "total waiting" figure for anything. This chart is
+    titled and documented as IPDC specifically; it must stay that way."""
     query = """
         SELECT d.archive_date, SUM(f.count) AS total_waiting
         FROM warehouse.fact_waiting_list f
@@ -45,6 +54,7 @@ def get_trend(con: duckdb.DuckDBPyConnection, hospital_name: str):
         WHERE h.hospital_name = ?
           AND f.is_suppressed_bucket = FALSE
           AND f.adult_child = 'Adult'
+          AND f.list_type = 'ipdc'
         GROUP BY d.archive_date
         ORDER BY d.archive_date
     """

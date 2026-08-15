@@ -43,6 +43,10 @@ OUTPUT_DIR = REPO_ROOT / "site" / "charts"
 
 
 def get_band_breakdown(con: duckdb.DuckDBPyConnection, hospital_name: str) -> pd.DataFrame:
+    # list_type = 'ipdc' required: fact_waiting_list also holds Outpatient
+    # (OP) rows since Decision 009, distinguished only by this column.
+    # Without it this silently sums IPDC + OP together — same bug class
+    # confirmed and fixed in hospital_trend.py, 2026-08-15.
     query = """
         SELECT d.archive_date, f.time_band, f.count
         FROM warehouse.fact_waiting_list f
@@ -51,6 +55,7 @@ def get_band_breakdown(con: duckdb.DuckDBPyConnection, hospital_name: str) -> pd
         WHERE h.hospital_name = ?
           AND f.is_suppressed_bucket = FALSE
           AND f.adult_child = 'Adult'
+          AND f.list_type = 'ipdc'
     """
     df = con.execute(query, [hospital_name]).df()
     if df.empty:
